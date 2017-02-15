@@ -15,6 +15,16 @@ $app->group('/migrate', function() {
 	$this->get('/', function($request, $response, $args) {
 	$userMigration = new App\Migration\UserMigration();
 	$userMigration->createTable();
+
+	$BoardMigration = new App\Migration\BoardMigration();
+	$BoardMigration->createTable();
+
+	$ListMigration = new App\Migration\ListMigration();
+	$ListMigration->createTable();
+
+	$CardMigration = new App\Migration\CardMigration();
+	$CardMigration->createTable();
+
 	return $response;
 	});
 });
