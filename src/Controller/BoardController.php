@@ -40,7 +40,8 @@ class BoardController extends Controller
 
 		 // insert
         if ($postData['id'] == '') {
-        	$this->session->setFlash('success', 'Boad Berhasil Dibuat');
+
+        	$this->session->setFlash('success', 'Board Berhasil Dibuat');
             $board = new Board();
         } else {
         // update
