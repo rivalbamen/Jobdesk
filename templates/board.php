@@ -134,28 +134,51 @@
                 <?php endif; ?>
               </div>
             </div>
-        
+      <div class="col-md-12"></div>
+                        <div class="col-md-12"></div>
                            <div class="row active">
-                                    <div class="col-sm-2">
-                                        <div class="white-box text-center bg-purple"><a href="" target="" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br>Create</a></div>
+                                    <div class="col-sm-9">
+                                        <!-- <div class="white-box text-center bg-purple"> -->
+                                        <a class="text-white btn white-box text-center bg-purple m-t-12 collapseble">Create</a>
+                                          <div class="m-t-15 collapseblebox dn" style="display: none;">
+                                        <div class="row active">
+                                <div class="col-sm-4" style="display: block;">
+                                    <div class="panel panel-info">
+                                      <div class="panel-heading"> Create Board 
+                                        <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
+                                      </div>
+                                <div class="panel-wrapper collapse in" aria-expanded="true">
+                                  <div class="panel-body">
+                                      <form action="#">
+                                          <div class="form-body">
+                                              <div class="row">
+                                                  <div class="col-md-12">
+                                                      <div class="form-group">
+                                                        <label class="control-label">Tittle</label>
+                                                        <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                      </div>
+                                                  <div class="form-group">
+                                                    <label class="control-label">Team</label>
+                                                      <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
+                                        </div>
+                                      </form>
+                                  </div>
+                              </div>
+                                    </div>
+                              </div>
+                              </div>
+                                        </div>
+
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="row active">
-                                <div class="col-sm-4">
-                                    <div class="panel panel-default">
-                                      <div class="panel-heading">Create 
-                                          <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
-                                      </div>
-                                      <div class="panel-wrapper collapse in" aria-expanded="true">
-                                          <div class="panel-body">
-                                              <div class="col-md-12">
-                                                  <input type="text" class="form-control" value="" name="username">
-                                              </div>
-                                          <div class="panel-footer"> <a class="btn btn-info m-t-10">Create</a> </div>
-                                      </div>
-                                  </div>
-                                  </div>
-                                </div>
+                           
 
         <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
         </div>
