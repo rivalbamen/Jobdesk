@@ -25,8 +25,8 @@ class BoardController extends Controller
 			$data['boards'] = (object)$this->session->getFlash('postBoard');
 		}
 
-		if(isset($args['id_boadr_boadr']))
-			$data['board'] = Board::find($args['id_boadr']);
+		if(isset($args['id']))
+			$data['board'] = Board::find($args['id']);
 
 
 		$data['title'] = "Form Boadr";
@@ -39,17 +39,17 @@ class BoardController extends Controller
 		$postData = $request->getParsedBody();
 
 		 // insert
-        if ($postData['id_boadr'] == '') {
+        if ($postData['id'] == '') {
         	$this->session->setFlash('success', 'Boad Berhasil Dibuat');
             $board = new Board();
         } else {
         // update
         	$this->session->setFlash('success', 'Board Berhasil Diperbaharui');
-            $board = board::find($postData['id_boadr']);
+            $board = board::find($postData['id']);
         }
 
-        $board->id_board = $postData['id_board'];
-        $board->nama_board = ($postData['nama_board']);
+        $board->id = $postData['id'];
+        $board->boardname = ($postData['boardname']);
 
         $board->save();
 
@@ -59,7 +59,7 @@ class BoardController extends Controller
 
 	public function delete(Request $request, Response $response, Array $args)
 	{
-		$board = Board::find($args['id_boadr']);
+		$board = Board::find($args['id']);
 		$board->delete();
 		$this->session->setFlash('success', 'Board Terhapus');
 		return $response->withRedirect($this->router->pathFor('tampil-board'));
