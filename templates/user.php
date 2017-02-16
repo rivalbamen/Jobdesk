@@ -100,18 +100,22 @@
   <div class="navbar-default sidebar hidden-print" role="navigation">
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
-            <!--<li class="sidebar-search hidden-sm hidden-md hidden-lg">
+            <li class="sidebar-search hidden-sm hidden-md hidden-lg">
                 <div class="input-group custom-search-form">
                     <input type="text" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
                     <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
                     </span>
                 </div>
-            </li>-->
+            </li>
             
-            <li><a href="#" class="waves-effect"><i class="ti-user fa-fw"></i> <span class="hide-menu">User <span class="fa arrow"></span></span></a>
+            <li><a href="#" class="waves-effect"><i class="ti-user fa-fw"></i> <span class="hide-menu">User<span class="fa arrow"></span></span></a>
               <ul class="nav nav-second-level">
-                <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li>
+                <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
+        </ul>
+        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+              <ul class="nav nav-second-level">
+                <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
         </ul>
     </div>
   </div>
@@ -130,39 +134,50 @@
                 <?php endif; ?>
               </div>
             </div>
-            <div class="row">
-            <div class="col-sm-12">
-                <div class="white-box">
-                    <h3 class="box-title m-b-0"><?=$title?></h3>
-                    
-                    <p class="text-muted m-b-20"><a href="<?php echo $this->pathFor('form-user'); ?>" class="btn btn-primary">Tambah</a></p>
-                    <table class="table table-striped myDataTable">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>User</th>
-                                <th>Role</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach($users as $user): ?>
-                            <tr>
-                                <td class="text-nowrap">
-                                    <a href="<?php echo $this->pathFor('update-user', ['id' => $user->id]) ?>" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i></a>
-                                    <a href="<?php echo $this->pathFor('delete-user', ['id' => $user->id]) ?>" data-toggle="tooltip" data-original-title="Hapus"> <i class="fa fa-close text-danger m-r-10"></i> </a>
-                                </td>
-                                <td><?php echo $user->username; ?></td>
-                                <td><?php echo $user->role; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+                        <div class="col-md-12"></div>
+                           <div class="row active">
+                                    <div class="col-sm-9">
+                                        <!-- <div class="white-box text-center bg-purple"> -->
+                                        <a class="text-white btn white-box text-center bg-purple m-t-12 collapseble">Create</a>
+                                          <div class="m-t-15 collapseblebox dn" style="display: none;">
+                                        <div class="row active">
+                                <div class="col-sm-4" style="display: block;">
+                                    <div class="panel panel-info">
+                                      <div class="panel-heading"> Create Board 
+                                        <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
+                                      </div>
+                                <div class="panel-wrapper collapse in" aria-expanded="true">
+                                  <div class="panel-body">
+                                      <form action="#">
+                                          <div class="form-body">
+                                              <div class="row">
+                                                  <div class="col-md-12">
+                                                      <div class="form-group">
+                                                        <label class="control-label">Tittle</label>
+                                                        <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                      </div>
+                                                  <div class="form-group">
+                                                    <label class="control-label">Team</label>
+                                                      <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
+                                        </div>
+                                      </form>
+                                  </div>
+                              </div>
+                                    </div>
+                              </div>
+                              </div>
+                                        </div>
 
+                                        </div>
+                                    </div>
+                                </div>
 
-           
 
         <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
         </div>
