@@ -149,13 +149,13 @@
                                       </div>
                                 <div class="panel-wrapper collapse in" aria-expanded="true">
                                   <div class="panel-body">
-                                      <form action="#">
+                                      <form action="<?php echo $this->pathFor('save-board'); ?>" method="post">
                                           <div class="form-body">
                                               <div class="row">
                                                   <div class="col-md-12">
                                                       <div class="form-group">
                                                         <label class="control-label">Tittle</label>
-                                                        <input type="text" id="firstName" class="form-control" placeholder="John doe">
+                                                        <input type="text" id="firstName" class="form-control" name="boardname" placeholder="Board Name">
                                                       </div>
                                                   <div class="form-group">
                                                     <label class="control-label">Team</label>
