@@ -134,13 +134,14 @@
                 <?php endif; ?>
               </div>
             </div>
+                        <div class="col-md-12"></div>
                            <div class="row active">
-                                    <div class="col-sm-2">
-                                        <div class="white-box text-center bg-purple"><a href="" target="" class="text-white dropdown-toggle waves-effect waves-light"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br>Create</a></div>
-                                    </div>
-                                </div>
-                                <div class="row active">
-                                <div class="col-sm-4">
+                                    <div class="col-sm-9">
+                                        <!-- <div class="white-box text-center bg-purple"> -->
+                                        <a class="text-white btn white-box text-center bg-purple m-t-12 collapseble">Create</a>
+                                          <div class="m-t-15 collapseblebox dn" style="display: none;">
+                                        <div class="row active">
+                                <div class="col-sm-4" style="display: block;">
                                     <div class="panel panel-info">
                                       <div class="panel-heading"> Create Board 
                                         <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
@@ -170,6 +171,13 @@
                               </div>
                                     </div>
                               </div>
+                              </div>
+                                        </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
 
         <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
         </div>
