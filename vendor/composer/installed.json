@@ -2935,6 +2935,10 @@
         "license": [
             "MIT"
         ],
+
+        "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
+        "homepage": "https://github.com/container-interop/container-interop"
+
         "description": "Create deep copies (clones) of your objects",
         "homepage": "https://github.com/myclabs/DeepCopy",
         "keywords": [
@@ -3028,5 +3032,6 @@
             "testing",
             "xunit"
         ]
+
     }
 ]

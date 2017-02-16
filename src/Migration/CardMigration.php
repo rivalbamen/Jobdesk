@@ -11,9 +11,9 @@ class CardMigration
 		if(!Capsule::schema()->hasTable('cards')) {
 			Capsule::schema()->create('cards', function(Blueprint $table)
 				{
-					$table->increments('id_card');
-					$table->integer('id_list');
-					$table->string('name_card', 50);
+					$table->increments('id');
+					$table->integer('list');
+					$table->string('cardname', 50);
 					$table->timestamps();
 					$table->softDeletes();
 				});
