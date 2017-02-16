@@ -161,6 +161,32 @@
              </style>
                         <div class="col-md-12"></div>
                            <div class="row active">
+                                    <div class="col-sm-9">
+                                        <!-- <div class="white-box text-center bg-purple"> -->
+                                        <a class="text-white btn white-box text-center bg-purple m-t-12 collapseble">Create</a>
+                                          <div class="m-t-15 collapseblebox dn" style="display: none;">
+                                        <div class="row active">
+                                <div class="col-sm-4" style="display: block;">
+                                    <div class="panel panel-info">
+                                      <div class="panel-heading"> Create Board 
+                                        <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
+                                      </div>
+                                <div class="panel-wrapper collapse in" aria-expanded="true">
+                                  <div class="panel-body">
+                                      <form action="<?php echo $this->pathFor('save-board'); ?>" method="post">
+                                          <div class="form-body">
+                                              <div class="row">
+                                                  <div class="col-md-12">
+                                                      <div class="form-group">
+                                                        <label class="control-label">Tittle</label>
+                                                        <input type="text" id="firstName" class="form-control" name="boardname" placeholder="Board Name">
+                                                      </div>
+                                                  <div class="form-group">
+                                                    <label class="control-label">Team</label>
+                                                      <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
+                                                  </div>
+                                                </div>
+
                               <div class="col-sm-12">
                                   <ul class="board">
                                     <?php foreach($boards as $board): ?>
@@ -205,6 +231,7 @@
                                                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
                                                     </div>
                                                   </form>
+
                                               </div>
                                           </div>
                                         </div>
