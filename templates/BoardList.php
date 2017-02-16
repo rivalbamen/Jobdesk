@@ -106,134 +106,146 @@
 
   <!-- Left navbar-header end -->
   <!-- Page Content -->
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-12">
-                <?php if ($this->getSessionFlash('success')): ?>
-                <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <?php echo $this->getSessionFlash('success'); ?>
-                </div>
-                <?php endif; ?>
-              </div>
+    <div id="page-wrapper" style="min-height: 601px;">
+    <div class="container-fluid">
+      <div class="row bg-title">
+        <div class="col-sm-2 col-xs-9">
+          <a class="btn btn-block btn-outline btn-rounded btn-info"><span>Task Manager</span></a>
+        </div>
+        <div class="col-sm-2 col-lg-1 col-xs-9">
+          <a class="btn btn-block btn-outline btn-rounded btn-info"><span class="ti-lock"> Private</span></a>
+        </div>
+        <div class="col-lg-9 col-md-8 col-xs-12">
+          <ol class="breadcrumb">
+            <li><a href="#">Show Menu</a></li>
+          </ol>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-md-4">
+          <div class="white-box">
+            <h3 class="box-title">Task Manager</h3>
+            <div class="myadmin-dd dd" id="nestable">
+              <ol class="dd-list">
+                <li class="dd-item" data-id="">
+                  <div class="dd-handle"> Item 1 </div>
+                </li>
+                <li class="dd-item" data-id="2"><button data-action="collapse" type="button">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
+                  <div class="dd-handle"> Item 2 </div>
+                  <ol class="dd-list">
+                    <li class="dd-item" data-id="3">
+                      <div class="dd-handle"> Item 3 </div>
+                    </li>
+                    <li class="dd-item" data-id="4">
+                      <div class="dd-handle"> Item 4 </div>
+                    </li>
+                    <li class="dd-item" data-id="5"><button data-action="collapse" type="button">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
+                      <div class="dd-handle"> Item 5 </div>
+                      <ol class="dd-list">
+                        <li class="dd-item" data-id="6">
+                          <div class="dd-handle"> Item 6 </div>
+                        </li>
+                        <li class="dd-item" data-id="7">
+                          <div class="dd-handle"> Item 7 </div>
+                        </li>
+                        <li class="dd-item" data-id="8">
+                          <div class="dd-handle"> Item 8 </div>
+                        </li>
+                      </ol>
+                    </li>
+                    <li class="dd-item" data-id="9">
+                      <div class="dd-handle"> Item 9 </div>
+                    </li>
+                    <li class="dd-item" data-id="10">
+                      <div class="dd-handle"> Item 10 </div>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
             </div>
-                  <div class="col-sm-12"></div>
-           <div class="col-md-12"></div>
-             <style type="text/css">
-               ul.board {
-                  list-style: none;
-                  padding: 0;
-                  margin: 0;
-               }
-               ul.board li {
-                  margin: 5px;
-                  border-radius: 5px;
-                  height: 120px;
-                  font-size: 18px;
-                  background: #fcfcfc;
-                  padding: 10px;
-               }
-               ul.board li span {
-                  color: #fff;
-               }
-               span.create-board {
-                color: #9d9d9d !important;
-               }
-               .bg-blue {
-                background: #0085ff !important;
-               }
-             </style>
-                        <div class="col-md-12"></div>
-                           <div class="row active">
-                                    <div class="col-sm-9">
-                                        <a class="text-white btn white-box text-center bg-purple m-t-12 collapseble">Create</a>
-                                          <div class="m-t-15 collapseblebox dn" style="display: none;">
-                                        <div class="row active">
-                                <div class="col-sm-4" style="display: block;">
-                                    <div class="panel panel-info">
-                                      <div class="panel-heading"> Create Board 
-                                        <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
-                                      </div>
+          </div>
+        </div>
+        </div>
+        <!-- <div class="col-md-4">
+          <div class="panel panel-info">
                                 <div class="panel-wrapper collapse in" aria-expanded="true">
                                   <div class="panel-body">
-                                      <form action="<?php echo $this->pathFor('save-board'); ?>" method="post">
+                                      <form action="#">
                                           <div class="form-body">
                                               <div class="row">
                                                   <div class="col-md-12">
                                                       <div class="form-group">
-
                                                         <label class="control-label">Title</label>
                                                         <input type="text" id="firstName" class="form-control" placeholder="Input Title">
-                                                        <label class="control-label">Tittle</label>
-                                                        <input type="text" id="firstName" class="form-control" name="boardname" placeholder="Board Name">
                                                       </div>
                                                   <div class="form-group">
                                                     <label class="control-label">Team</label>
                                                       <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
                                                   </div>
                                                 </div>
-
-                              <div class="col-sm-12">
-                                  <ul class="board">
-                                    <?php foreach($boards as $board): ?>
-                                    <a href="<?= $board->id; ?>">
-                                      <li class="board-list bg-blue text-white white-box bg-blue m-t-12 collapseble col-md-3">
-                                        <span><?= $board->boardname; ?></span>
-                                      </li>
-                                    </a>
-                                  <?php endforeach; ?>
-                                    <a href="#">
-                                      <li class="board-list white-box btn m-t-12 collapseble col-md-3">
-                                        <center><span class="create-board board-default">Create New Board</span></center>
-                                      </li>
-                                    </a>
-                                  </ul>
-                                  <!-- <div class="white-box text-center bg-purple"> -->
-                                    <div class="m-t-15 collapseblebox dn" style="display: none;">
-                                      <div class="row active">
-                                        <div class="col-sm-4" style="display: block;">
-                                          <div class="panel panel-info">
-                                            <div class="panel-heading"> Create Board 
-                                              <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
-                                            </div>
-                                            <div class="panel-wrapper collapse in" aria-expanded="true">
-                                              <div class="panel-body">
-                                                  <form action="<?= $this->pathFor('save-board'); ?>" method="POST">
-                                                      <div class="form-body">
-                                                          <div class="row">
-                                                              <div class="col-md-12">
-                                                                  <div class="form-group">
-                                                                    <label class="control-label">Tittle</label>
-                                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe" name="boardname">
-                                                                  </div>
-                                                              <div class="form-group">
-                                                                <label class="control-label">Team</label>
-                                                                  <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                    </div>
-                                                    <div class="form-actions">
-                                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
-                                                    </div>
-                                                  </form>
-
                                               </div>
-                                          </div>
                                         </div>
-                                      </div>
-                                    </div>
+                                        <div class="form-actions">
+                                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
+                                        </div>
+                                      </form>
                                   </div>
                               </div>
-                            </div>
-                        </div>
-                           
+                                    </div>
+        </div> -->
+      <!-- <form><span class="placeholder js-open-add-list">Add a list…</span><input class="list-name-input" type="text" name="name" placeholder="Add a list…" autocomplete="off" dir="auto" maxlength="512"><div class="list-add-controls u-clearfix"><input class="primary mod-list-add-button js-save-edit" type="submit" value="Save"><a class="icon-lg icon-close dark-hover js-cancel-edit" href="#"></a></div></form> -->
+      <!-- .right-sidebar -->
+      <div class="right-sidebar">
+        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="slimscrollright" style="overflow: hidden; width: auto; height: 100%;">
+          <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+          <div class="r-panel-body">
+            <ul>
+              <li><b>Layout Options</b></li>
+              <li>
+                <div class="checkbox checkbox-info">
+                  <input id="checkbox1" type="checkbox" class="fxhdr">
+                  <label for="checkbox1"> Fix Header </label>
+                </div>
+              </li>
+              
+            </ul>
+            <ul id="themecolors" class="m-t-20">
+              <li><b>With Light sidebar</b></li>
+              <li><a href="javascript:void(0)" theme="default" class="default-theme">1</a></li>
+              <li><a href="javascript:void(0)" theme="green" class="green-theme">2</a></li>
+              <li><a href="javascript:void(0)" theme="gray" class="yellow-theme">3</a></li>
+              <li><a href="javascript:void(0)" theme="blue" class="blue-theme">4</a></li>
+              <li><a href="javascript:void(0)" theme="purple" class="purple-theme">5</a></li>
+              <li><a href="javascript:void(0)" theme="megna" class="megna-theme working">6</a></li>
+              <li><b>With Dark sidebar</b></li>
+              <br>
+              <li><a href="javascript:void(0)" theme="default-dark" class="default-dark-theme">7</a></li>
+              <li><a href="javascript:void(0)" theme="green-dark" class="green-dark-theme">8</a></li>
+              <li><a href="javascript:void(0)" theme="gray-dark" class="yellow-dark-theme">9</a></li>
 
-        <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
-        </div>
-      <!-- /#page-wrapper -->
+              <li><a href="javascript:void(0)" theme="blue-dark" class="blue-dark-theme">10</a></li>
+              <li><a href="javascript:void(0)" theme="purple-dark" class="purple-dark-theme">11</a></li>
+              <li><a href="javascript:void(0)" theme="megna-dark" class="megna-dark-theme">12</a></li>
+            </ul>
+            <ul class="m-t-20 chatonline">
+              <li><b>Chat option</b></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/john.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/pawandeep.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a></li>
+            </ul>
+          </div>
+        </div><div class="slimScrollBar" style="background: rgb(220, 220, 220); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+      </div>
+      <!-- /.right-sidebar -->
     </div>
+    <!-- /.container-fluid -->
+    <footer class="footer text-center"> 2016 © Elite Admin brought to you by themedesigner.in </footer>
+  </div>
 </div>
 <!-- /#wrapper -->
 
@@ -280,6 +292,7 @@
 <script src="<?=$this->baseUrl()?>plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js"></script>
 
 <script src="<?=$this->baseUrl()?>js/numeral.js"></script>
+<script src="<?=$this->baseUrl()?>plugins/bower_components/nestable/jquery.nestable.js"></script>
 <script type="text/javascript">
 
 var isconfirming = false;
@@ -309,46 +322,65 @@ var isconfirming = false;
 
 
    $(document).ready(function() {
-      // $.toast({
-      //   heading: 'Welcome to Elite admin',
-      //   text: 'Use the predefined ones, or specify a custom position object.',
-      //   position: 'top-right',
-      //   loaderBg:'#ff6849',
-      //   icon: 'info',
-      //   hideAfter: 3500,
 
-      //   stack: 6
-      // })
-      //$('.myDataTable').DataTable({paging:false,pageLength:1000}); //paging causing confusion
-      //delete confirmation
-      $('.fa-close').parent().click(function(event) {
-            return confirm('Klik ok untuk menghapus');
-          });
-      $('.myDataTable').on( 'init.dt', function () {
-          //delete confirmation
-          console.log($(this).find('.fa-close').parent().get());
-            $(this).find('.fa-close').parent().unbind( "click" );
+    //   var updateOutput = function(e) {
+    //     var list   = e.length ? e : $(e.target),
+    //         output = list.data('output');
+    //     if (window.JSON) {
+    //         output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+    //     } else {
+    //         output.val('JSON browser support required for this demo.');
+    //     }
+    // };
+    
+    // $('#nestable').nestable({group: 1}).on('change', updateOutput);
+    
+    // $('#nestable2').nestable({group: 1}).on('change', updateOutput);
+    
+    // updateOutput($('#nestable').data('output', $('#nestable-output')));
+    // updateOutput($('#nestable2').data('output', $('#nestable2-output')));
 
-            $(this).find('.fa-close').parent().click(function(event) {
+    // $('#nestable-menu').on('click', function(e)  {
+    //     var target = $(e.target),
+    //         action = target.data('action');
+    //     if (action === 'expand-all') {
+    //         $('.dd').nestable('expandAll');
+    //     }
+    //     if (action === 'collapse-all') {
+    //         $('.dd').nestable('collapseAll');
+    //     }
+    // });
 
-              return confirm('Klik ok untuk menghapus');
-            });
+    // $('#nestable-menu').nestable();
+      
+      // $('.fa-close').parent().click(function(event) {
+      //       return confirm('Klik ok untuk menghapus');
+      //     });
+      // $('.myDataTable').on( 'init.dt', function () {
+      //     //delete confirmation
+      //     console.log($(this).find('.fa-close').parent().get());
+      //       $(this).find('.fa-close').parent().unbind( "click" );
 
-      } ).DataTable({
-        "order": []
-      }); //paging causing confusion
-      $('.footable').footable();
-      $(".select2").select2();
-      $('.input-daterange').datepicker({
-        toggleActive: true
-      });
-      $('.mydatepicker').datepicker({
-        autoclose:true,
-        ignoreReadonly: false
-      });
-      $('.clockpicker').clockpicker({
-          donetext: 'Done',
-      });
+      //       $(this).find('.fa-close').parent().click(function(event) {
+
+      //         return confirm('Klik ok untuk menghapus');
+      //       });
+
+      // } ).DataTable({
+      //   "order": []
+      // }); //paging causing confusion
+      // $('.footable').footable();
+      // $(".select2").select2();
+      // $('.input-daterange').datepicker({
+      //   toggleActive: true
+      // });
+      // $('.mydatepicker').datepicker({
+      //   autoclose:true,
+      //   ignoreReadonly: false
+      // });
+      // $('.clockpicker').clockpicker({
+      //     donetext: 'Done',
+      // });
     });
 
 </script>
