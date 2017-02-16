@@ -11,8 +11,8 @@ class BoardMigration
 		if(!Capsule::schema()->hasTable('boards')) {
 			Capsule::schema()->create('boards', function(Blueprint $table)
 				{
-					$table->increments('id_board');
-					$table->string('name_board', 50);
+					$table->increments('id');
+					$table->string('boardname', 50);
 					$table->timestamps();
 					$table->softDeletes();
 				});

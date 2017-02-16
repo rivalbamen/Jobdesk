@@ -11,9 +11,9 @@ class ListMigration
 		if(!Capsule::schema()->hasTable('lists')) {
 			Capsule::schema()->create('lists', function(Blueprint $table)
 				{
-					$table->increments('id_list');
-					$table->integer('id_board');
-					$table->string('name_list', 50);
+					$table->increments('id');
+					$table->integer('board');
+					$table->string('listname', 50);
 					$table->timestamps();
 					$table->softDeletes();
 				});
