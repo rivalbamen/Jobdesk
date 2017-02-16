@@ -17,7 +17,7 @@ class BoardController extends Controller
 		return $this->renderer->render($response, 'board', $data);
 	}
 
-	public function create_board(Request $request, Response $response, Array $args)
+	public function form(Request $request, Response $response, Array $args)
 	{
 		$data = [];
 		
@@ -43,13 +43,12 @@ class BoardController extends Controller
 
         	$this->session->setFlash('success', 'Board Berhasil Dibuat');
             $board = new Board();
-        } else {
+        // } else {
         // update
-        	$this->session->setFlash('success', 'Board Berhasil Diperbaharui');
-            $board = board::find($postData['id']);
+        	// $this->session->setFlash('success', 'Board Berhasil Diperbaharui');
+         //    $board = board::find($postData['id']);
         }
 
-        $board->id = $postData['id'];
         $board->boardname = ($postData['boardname']);
 
         $board->save();
