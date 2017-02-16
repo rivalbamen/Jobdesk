@@ -134,7 +134,31 @@
                 <?php endif; ?>
               </div>
             </div>
-      <div class="col-md-12"></div>
+           <div class="col-md-12"></div>
+             <style type="text/css">
+               ul.board {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+               }
+               ul.board li {
+                  margin: 5px;
+                  border-radius: 5px;
+                  height: 120px;
+                  font-size: 18px;
+                  background: #fcfcfc;
+                  padding: 10px;
+               }
+               ul.board li span {
+                  color: #fff;
+               }
+               span.create-board {
+                color: #9d9d9d !important;
+               }
+               .bg-blue {
+                background: #0085ff !important;
+               }
+             </style>
                         <div class="col-md-12"></div>
                            <div class="row active">
                                     <div class="col-sm-9">
@@ -162,22 +186,61 @@
                                                       <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
                                                   </div>
                                                 </div>
+
+                              <div class="col-sm-12">
+                                  <ul class="board">
+                                    <?php foreach($boards as $board): ?>
+                                    <a href="<?= $board->id; ?>">
+                                      <li class="board-list bg-blue text-white white-box bg-blue m-t-12 collapseble col-md-3">
+                                        <span><?= $board->boardname; ?></span>
+                                      </li>
+                                    </a>
+                                  <?php endforeach; ?>
+                                    <a href="#">
+                                      <li class="board-list white-box btn m-t-12 collapseble col-md-3">
+                                        <center><span class="create-board board-default">Create New Board</span></center>
+                                      </li>
+                                    </a>
+                                  </ul>
+                                  <!-- <div class="white-box text-center bg-purple"> -->
+                                    <div class="m-t-15 collapseblebox dn" style="display: none;">
+                                      <div class="row active">
+                                        <div class="col-sm-4" style="display: block;">
+                                          <div class="panel panel-info">
+                                            <div class="panel-heading"> Create Board 
+                                              <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
+                                            </div>
+                                            <div class="panel-wrapper collapse in" aria-expanded="true">
+                                              <div class="panel-body">
+                                                  <form action="<?= $this->pathFor('save-board'); ?>" method="POST">
+                                                      <div class="form-body">
+                                                          <div class="row">
+                                                              <div class="col-md-12">
+                                                                  <div class="form-group">
+                                                                    <label class="control-label">Tittle</label>
+                                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe" name="boardname">
+                                                                  </div>
+                                                              <div class="form-group">
+                                                                <label class="control-label">Team</label>
+                                                                  <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                    </div>
+                                                    <div class="form-actions">
+                                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
+                                                    </div>
+                                                  </form>
+
                                               </div>
+                                          </div>
                                         </div>
-                                        <div class="form-actions">
-                                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
-                                        </div>
-                                      </form>
+                                      </div>
+                                    </div>
                                   </div>
                               </div>
-                                    </div>
-                              </div>
-                              </div>
-                                        </div>
-
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
                            
 
         <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>

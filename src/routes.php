@@ -61,6 +61,7 @@ $app->group('/card', function() {
 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
 	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-card');
+
 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
 
 });
