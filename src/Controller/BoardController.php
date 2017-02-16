@@ -5,7 +5,7 @@ namespace App\Controller;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
-use App\Model\Boadr;
+use App\Model\Board;
 
 class BoardController extends Controller
 {
@@ -29,7 +29,7 @@ class BoardController extends Controller
 			$data['board'] = Board::find($args['id']);
 
 
-		$data['title'] = "Form Boadr";
+		$data['title'] = "Form Board";
 
 		return $this->renderer->render($response, 'board-form', $data);
 	}
@@ -40,7 +40,7 @@ class BoardController extends Controller
 
 		 // insert
         if ($postData['id'] == '') {
-        	$this->session->setFlash('success', 'Boad Berhasil Dibuat');
+        	$this->session->setFlash('success', 'Board Berhasil Dibuat');
             $board = new Board();
         } else {
         // update
