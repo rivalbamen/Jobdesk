@@ -40,35 +40,32 @@ $app->group('/user', function() {
 
 $app->group('/board', function() {
 	$this->get('/', App\Controller\BoardController::class)->setName('tampil-board');
-<<<<<<< HEAD
 	$this->get('/list/{id}', App\Controller\ListController::class)->setName('list-board');
-=======
 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
->>>>>>> upstream/master
 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
 	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-board');
 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
 
 });
 
-$app->group('/list', function() {
-	$this->get('/', App\Controller\BoardController::class)->setName('tampil-list');
-	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
-	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
-	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-list');
-	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
+// // $app->group('/list', function() {
+// 	$this->get('/', App\Controller\BoardController::class)->setName('tampil-list');
+// 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
+// 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
+// 	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-list');
+// 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
 
-});
+// });
 
-$app->group('/card', function() {
-	$this->get('/', App\Controller\BoardController::class)->setName('tampil-card');
-	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
-	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
-	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-card');
+// $app->group('/card', function() {
+// 	$this->get('/', App\Controller\BoardController::class)->setName('tampil-card');
+// 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
+// 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
+// 	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-card');
 
-	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
+// 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
 
-});
+// // });
 
 
 

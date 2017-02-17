@@ -12,7 +12,7 @@ class ListController extends Controller
 	public function __invoke(Request $request, Response $response, Array $args)
 	{
 		$data['lists'] = Lists::all();
-		$data['title'] = "Task Manager";
+		$data['title'] = "List Manager - Task Manager";
 
 		return $this->renderer->render($response, 'list', $data);
 	}
