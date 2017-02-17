@@ -130,9 +130,11 @@
       </div>
       <!-- isi content -->
         <div class="col-sm-3 col-xs-12">
-            <button type="button" class="btn btn-block btn-rounded btn-default showtop" data-target="#add-list" data-toggle="modal">Add a List ...</button>
-            <!-- Start an Alert -->
+            <button type="button" class="btn btn-block btn-rounded btn-default showtop" data-target="#add-list" data-toggle="modal">Add a List ...
+            </button>
+            <!-- Start pop up -->
         </div>
+        <!-- add list -->
         <div id="add-list" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-right: 17px;">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -147,14 +149,15 @@
                                 </div>
                             </div>
                         </from>
-                        <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Add</button>
-                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Add</button>
+                          <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
-                </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
+          </div>
+
+      
+
         </div>
 
       <div class="right-sidebar">
