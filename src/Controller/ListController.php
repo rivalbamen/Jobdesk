@@ -6,6 +6,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
 use App\Model\Lists;
+use App\Model\Board;
 
 class ListController extends Controller
 {
@@ -13,6 +14,10 @@ class ListController extends Controller
 	{
 		$data['lists'] = Lists::all();
 		$data['title'] = "List Manager - Task Manager";
+
+		if(isset($args['id'])){
+			$data['boards'] = Board::find($args['id']);
+		}
 
 		return $this->renderer->render($response, 'list', $data);
 	}
@@ -36,7 +41,10 @@ class ListController extends Controller
 
 	public function save(Request $request, Response $response, Array $args)
 	{
+
 		$postData = $request->getParsedBody();
+
+		var_dump($postData);
 
 		 // insert
         if ($postData['id'] == '') {
@@ -49,11 +57,12 @@ class ListController extends Controller
         }
 
         $list->id = $postData['id'];
+        $list->board = $postData['idboard'];
         $list->listname = ($postData['listname']);
 
         $list->save();
 
-        return $response->withRedirect($this->router->pathFor('tampil-list'));
+        return $response->withRedirect('/board/list/'.$list->board);
 
 	}
 
