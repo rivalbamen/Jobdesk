@@ -117,7 +117,7 @@
     <!-- menu title -->
       <div class="row bg-title">
         <div class="col-sm-2 col-xs-9">
-          <a class="btn btn-block btn-outline btn-rounded btn-info"><span>Task Manager</span></a>
+          <a class="btn btn-block btn-outline btn-rounded btn-info"><span><?php echo @$boards->boardname; ?></span></a>
         </div>
         <div class="col-sm-2 col-lg-1 col-xs-9">
           <a class="btn btn-block btn-outline btn-rounded btn-info"><span class="ti-lock"> Private</span></a>
