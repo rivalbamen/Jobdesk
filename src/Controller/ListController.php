@@ -5,14 +5,14 @@ namespace App\Controller;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
-use App\Model\List;
+use App\Model\Lists;
 
-class ListdController extends Controller
+class ListController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
 	{
-		$data['lists'] = List::all();
-		$data['title'] = "Task Manager";
+		$data['lists'] = Lists::all();
+		$data['title'] = "List Manager - Task Manager";
 
 		return $this->renderer->render($response, 'list', $data);
 	}
@@ -26,7 +26,7 @@ class ListdController extends Controller
 		}
 
 		if(isset($args['id']))
-			$data['list'] = List::find($args['id']);
+			$data['list'] = Lists::find($args['id']);
 
 
 		$data['title'] = "Form List";
@@ -41,11 +41,11 @@ class ListdController extends Controller
 		 // insert
         if ($postData['id'] == '') {
         	$this->session->setFlash('success', 'List Berhasil Dibuat');
-            $list = new List();
+            $list = new Lists();
         } else {
         // update
         	$this->session->setFlash('success', 'List Berhasil Diperbaharui');
-            $list = list::find($postData['id']);
+            $list = lists::find($postData['id']);
         }
 
         $list->id = $postData['id'];
@@ -59,7 +59,7 @@ class ListdController extends Controller
 
 	public function delete(Request $request, Response $response, Array $args)
 	{
-		$list = List::find($args['id']);
+		$list = Lists::find($args['id']);
 		$list->delete();
 		$this->session->setFlash('success', 'List Terhapus');
 		return $response->withRedirect($this->router->pathFor('tampil-list'));

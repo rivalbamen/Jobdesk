@@ -40,15 +40,26 @@ $app->group('/user', function() {
 
 $app->group('/board', function() {
 	$this->get('/', App\Controller\BoardController::class)->setName('tampil-board');
+<<<<<<< HEAD
 	$this->get('/list', App\Controller\BoardController::class.':form')->setName('form-list');
 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
 	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-board');
 
+=======
+	$this->get('/list/{id}', App\Controller\ListController::class)->setName('list-board');
+	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
+	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
+	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-board');
+>>>>>>> upstream/master
 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
 
 });
 
+<<<<<<< HEAD
 // $app->group('/list', function() {
+=======
+// // $app->group('/list', function() {
+>>>>>>> upstream/master
 // 	$this->get('/', App\Controller\BoardController::class)->setName('tampil-list');
 // 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
 // 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
@@ -62,9 +73,16 @@ $app->group('/board', function() {
 // 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
 // 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
 // 	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-card');
+<<<<<<< HEAD
 // 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
 
 // });
+=======
+
+// 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
+
+// // });
+>>>>>>> upstream/master
 
 
 

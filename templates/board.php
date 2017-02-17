@@ -154,7 +154,7 @@
                               <div class="col-sm-12">
                                   <ul class="board">
                                     <?php foreach($boards as $board): ?>
-                                    <a href="<?= $board->id; ?>">
+                                    <a href="list/<?= $board->id; ?>">
                                       <li class="board-list bg-blue text-white white-box bg-blue m-t-12 collapseble col-md-3">
                                         <span><?= $board->boardname; ?></span>
                                       </li>
@@ -195,6 +195,10 @@
                                                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
                                                     </div>
                                                   </form>
+<<<<<<< HEAD
+=======
+<!-- >>>>>>> upstream/master -->
+>>>>>>> upstream/master
                                               </div>
                                           </div>
                                         </div>
