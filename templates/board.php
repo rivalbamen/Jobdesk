@@ -38,6 +38,14 @@
 <link href="<?=$this->baseUrl()?>css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="<?=$this->baseUrl()?>css/colors/blue.css" id="theme"  rel="stylesheet">
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<!-- <script src="http://www.w3schools.com/lib/w3data.js"></script> -->
+
 
 <!-- jQuery -->
 <script src="<?=$this->baseUrl()?>plugins/bower_components/jquery/dist/jquery.min.js"></script>
@@ -52,28 +60,36 @@
   <!-- HEADER -->
 
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-static-top m-b-0">
+  <nav class="navbar navbar-default navbar-static-top m-b-0 hidden-print">
     <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-      <div class="top-left-part"><a class="logo" href="#"><b><img src="<?=$this->baseUrl()?>plugins/images/harmonipermana-logo.png" width="150" alt="home" /></b><span class="hidden-xs"></span></a></div>
-      <ul class="nav navbar-top-links navbar-left hidden-xs active">
-        <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="ti-menu"></i></a></li>
-        <li class="in">
+      <div class="top-left-part"><a class="logo"  href="#"><b><img src="<?=$this->baseUrl()?>plugins/images/harmonipermana-logo.png" width="150" alt="home" /></b><span class="hidden-xs"></span></a></div>
+      <ul class="nav navbar-top-links navbar-left hidden-xs">
+        <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
+        <!--<li>
           <form role="search" class="app-search hidden-xs">
             <input type="text" placeholder="Search..." class="form-control">
-            <a href="" class="active"><i class="fa fa-search"></i></a>
+            <a href=""><i class="fa fa-search"></i></a>
           </form>
-        </li>
+        </li>-->
       </ul>
       <ul class="nav navbar-top-links navbar-right pull-right">
-        
-        <!-- /.dropdown -->
-        <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="http://localhost:8080/plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
-          <ul class="dropdown-menu dropdown-user animated flipInY">
-            <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
+                <img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle">
+                <b class="hidden-xs"> Admin</b>
+            </a>
+          <ul class="dropdown-menu dropdown-user animated">
+            <!--<li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+            <li role="separator" class="divider"></li>-->
+            <li><a href="#>"><i class="fa fa-power-off"></i> Logout</a></li>
           </ul>
           <!-- /.dropdown-user -->
         </li>
+        <!-- /.dropdown -->
       </ul>
     </div>
     <!-- /.navbar-header -->
@@ -108,17 +124,6 @@
   <!-- Page Content -->
     <div id="page-wrapper">
         <div class="container-fluid">
-            <div class="row">
-              <div class="col-sm-12">
-                <?php if ($this->getSessionFlash('success')): ?>
-                <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <?php echo $this->getSessionFlash('success'); ?>
-                </div>
-                <?php endif; ?>
-              </div>
-            </div>
-                  <div class="col-sm-12"></div>
            <div class="col-md-12"></div>
              <style type="text/css">
                ul.board {
@@ -146,34 +151,6 @@
              </style>
                         <div class="col-md-12"></div>
                            <div class="row active">
-                                    <div class="col-sm-9">
-                                        <a class="text-white btn white-box text-center bg-purple m-t-12 collapseble">Create</a>
-                                          <div class="m-t-15 collapseblebox dn" style="display: none;">
-                                        <div class="row active">
-                                <div class="col-sm-4" style="display: block;">
-                                    <div class="panel panel-info">
-                                      <div class="panel-heading"> Create Board 
-                                        <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
-                                      </div>
-                                <div class="panel-wrapper collapse in" aria-expanded="true">
-                                  <div class="panel-body">
-                                      <form action="<?php echo $this->pathFor('save-board'); ?>" method="post">
-                                          <div class="form-body">
-                                              <div class="row">
-                                                  <div class="col-md-12">
-                                                      <div class="form-group">
-
-                                                        <label class="control-label">Title</label>
-                                                        <input type="text" id="firstName" class="form-control" placeholder="Input Title">
-                                                        <label class="control-label">Tittle</label>
-                                                        <input type="text" id="firstName" class="form-control" name="boardname" placeholder="Board Name">
-                                                      </div>
-                                                  <div class="form-group">
-                                                    <label class="control-label">Team</label>
-                                                      <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
-                                                  </div>
-                                                </div>
-
                               <div class="col-sm-12">
                                   <ul class="board">
                                     <?php foreach($boards as $board): ?>
@@ -218,7 +195,7 @@
                                                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
                                                     </div>
                                                   </form>
-
+<!-- >>>>>>> upstream/master -->
                                               </div>
                                           </div>
                                         </div>
