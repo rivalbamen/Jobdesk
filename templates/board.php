@@ -195,7 +195,6 @@
                                                         <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
                                                     </div>
                                                   </form>
-<!-- >>>>>>> upstream/master -->
                                               </div>
                                           </div>
                                         </div>
