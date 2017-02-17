@@ -137,8 +137,8 @@
       <div class="row">
         <div class="col-md-4">
           <div class="white-box">
-                       <label class="control-label">Add Card</label>
-                      <div class="panel-action"><a href="#" data-perform="panel-collapse">
+            <label class="control-label">Add Card</label>
+              <div class="panel-action"><a href="#" data-perform="panel-collapse">
             <div class="myadmin-dd dd" id="nestable">
               <ol class="dd-list">
                 <li class="dd-item" data-id="1">
