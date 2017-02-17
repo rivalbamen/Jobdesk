@@ -65,6 +65,9 @@
    .bg-blue {
     background: #0085ff !important;
    }
+   .bg-panel {
+    background : #e4e7ea;
+   }
 </style>
 
 </head>
@@ -140,25 +143,41 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">Add List</h4> </div>
+                        <h4 class="modal-title" id="myModalLabel">Add List</h4></div>
                     <div class="modal-body">
-                        <from class="form-horizontal form-material">
+                        <form action="<?= $this->pathFor('save-list'); ?>" method="POST">
                             <div class="form-group">
                                 <div class="col-md-12 m-b-20">
-                                    <input type="text" class="form-control" placeholder="Add a List . . . "> 
+                                    <input type="text" name="idboard" value="<?php echo @$boards->id ?>" class="hidden">
+                                    <input type="text" name="listname" class="form-control" placeholder="Add a List . . . "> 
                                 </div>
                             </div>
                         </from>
                           <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Add</button>
                           <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
+                        </form>
                     </div>
                 </div>
             </div>
           </div>
 
-      
-
-        </div>
+         <!-- content list -->
+         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                  <label class="control-label">Add Card</label>
+                      <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
+                      <a class="btn btn-block btn-default m-t-10 collapseble">Add a List ...
+                      </a>
+                      <div class="m-t-15 collapseblebox dn" style="display: none;">
+                          <div class="well"> <textarea class="form-control form-control-line" rows="3"></textarea>
+                           <a class="btn btn-info m-t-20">Add</a> </div>
+                                    </div>
+                  </div>
+              </div>
+          </div> 
+              </div>
+      </div>
 
       <div class="right-sidebar">
         <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="slimscrollright" style="overflow: hidden; width: auto; height: 100%;">
