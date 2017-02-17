@@ -138,16 +138,17 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">Add List</h4> </div>
+                        <h4 class="modal-title" id="myModalLabel">Add List</h4></div>
                     <div class="modal-body">
-                        <from class="form-horizontal form-material">
+                        <form action="<?= $this->pathFor('save-list'); ?>" method="POST">
                             <div class="form-group">
                                 <div class="col-md-12 m-b-20">
-                                    <input type="text" class="form-control" placeholder="Add a List . . . "> 
+                                    <input type="text" name="idboard" value="<?php echo @$boards->id ?>" class="hidden">
+                                    <input type="text" name="listname" class="form-control" placeholder="Add a List . . . "> 
                                 </div>
                             </div>
-                        </from>
-                        <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Add</button>
+                            <button type="submit" class="btn btn-info">Save</button>
+                        </form>
                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
