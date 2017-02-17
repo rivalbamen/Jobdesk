@@ -65,6 +65,9 @@
    .bg-blue {
     background: #0085ff !important;
    }
+   .bg-panel {
+    background : #e4e7ea;
+   }
 </style>
 
 </head>
@@ -129,10 +132,36 @@
         </div>
       </div>
       <!-- isi content -->
-        <div class="col-sm-3 col-xs-12">
-            <button type="button" class="btn btn-block btn-rounded btn-default showtop" data-target="#add-list" data-toggle="modal">Add a List ...</button>
-            <!-- Start an Alert -->
+       
+           <!-- /.right-sidebar -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="white-box">
+                       <label class="control-label">Add Card</label>
+                      <div class="panel-action"><a href="#" data-perform="panel-collapse">
+            <div class="myadmin-dd dd" id="nestable">
+              <ol class="dd-list">
+                <li class="dd-item" data-id="1">
+                  <div class="dd-handle"> </div>
+                </li>
+                  <a class="btn btn-block btn-default m-t-10 collapseble">Add a List ...</a>
+                    <div class="m-t-15 collapseblebox dn" style="display: none;">
+                      <div class="well"> <textarea class="form-control form-control-line" rows="3"></textarea>
+                        <a class="btn btn-info m-t-20">Add</a> 
+                      </div>
+                    </div>
+              </ol>
+            </div>
+            </div>
+          </div>
         </div>
+      <div class="myadmin-dd-empty dd" id="nestable2">
+         <div class="col-sm-3 col-xs-12">
+            <button type="button" class="btn btn-block btn-rounded btn-default showtop" data-target="#add-list" data-toggle="modal">Add a List ...
+            </button>
+            <!-- Start pop up -->
+        </div>
+        <!-- add list -->
         <div id="add-list" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none; padding-right: 17px;">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -147,16 +176,14 @@
                                     <input type="text" name="listname" class="form-control" placeholder="Add a List . . . "> 
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-info">Save</button>
+                        </from>
+                          <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Add</button>
+                          <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                         </form>
-                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
-                </div>
-                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-dialog -->
-        </div>
+          </div>
 
       <div class="right-sidebar">
         <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="slimscrollright" style="overflow: hidden; width: auto; height: 100%;">
@@ -170,6 +197,40 @@
    <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
   </div>
 </div>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    // Nestable
+    var updateOutput = function(e) {
+        var list   = e.length ? e : $(e.target),
+            output = list.data('output');
+        if (window.JSON) {
+            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+        } else {
+            output.val('JSON browser support required for this demo.');
+        }
+    };
+    
+    $('#nestable').nestable({group: 1}).on('change', updateOutput);
+    
+    $('#nestable2').nestable({group: 1}).on('change', updateOutput);
+    
+    updateOutput($('#nestable').data('output', $('#nestable-output')));
+    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+    $('#nestable-menu').on('click', function(e)  {
+        var target = $(e.target),
+            action = target.data('action');
+        if (action === 'expand-all') {
+            $('.dd').nestable('expandAll');
+        }
+        if (action === 'collapse-all') {
+            $('.dd').nestable('collapseAll');
+        }
+    });
+
+    $('#nestable-menu').nestable();
+});
+</script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="<?=$this->baseUrl()?>bootstrap/dist/js/bootstrap.min.js"></script>
