@@ -130,34 +130,16 @@
       </div>
       <!-- isi content -->
       <?php foreach($lists as $list): ?>
-        <div class="col-md-4">
-<<<<<<< HEAD
-          <div class="white-box">
-            <label class="control-label">Add Card</label>
-              <div class="panel-action"><a href="#" data-perform="panel-collapse">
-            <div class="myadmin-dd dd" id="nestable">
-              <ol class="dd-list">
-                <li class="dd-item" data-id="1">
-                  <div class="dd-handle"> </div>
-                </li>
-                  <a class="btn btn-block btn-default m-t-10 collapseble">Add a List ...</a>
-                    <div class="m-t-15 collapseblebox dn" style="display: none;">
-                      <div class="well"> <textarea class="form-control form-control-line" rows="3"></textarea>
-                        <a class="btn btn-info m-t-20">Add</a> 
-                      </div>
-                    </div>
-              </ol>
-            </div>
-=======
+        <div class="col-md-3">
             <div class="white-box">
               <label class="control-label"><?= $list->listname; ?></label>
                <div class="panel-action"><a href="#" data-perform="panel-collapse">
               <div class="myadmin-dd dd" id="nestable">
                 <ol class="dd-list">
                   <li class="dd-item" data-id="1">
-                    <div class="dd-handle"> cek</div>
+                    <div class="dd-handle btn-block btn-default"> cek </div>
                   </li>
-                    <a class="btn btn-block btn-default m-t-10 collapseble">Add a List ...</a>
+                    <a class="btn btn-block btn-default m-t-10 collapseble">Add a Card ...</a>
                     <form action="<?= $this->pathFor('save-card'); ?>" method="POST">
                       <div class="m-t-15 collapseblebox dn" style="display: none;">
                           <input type="text" name="board" value="<?php echo @$boards->id ?>" class="hidden">
@@ -169,7 +151,6 @@
                 </ol>
               </div>
               </div>
->>>>>>> upstream/master
             </div>
           </div>
         <?php endforeach; ?>
@@ -193,7 +174,6 @@
                             </div>
                             <button type="submit" class="btn btn-info">Save</button>
                         </form>
-                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
                 </div>
