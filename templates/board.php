@@ -38,15 +38,32 @@
 <link href="<?=$this->baseUrl()?>css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="<?=$this->baseUrl()?>css/colors/blue.css" id="theme"  rel="stylesheet">
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-<!-- <script src="http://www.w3schools.com/lib/w3data.js"></script> -->
-
-
+<style type="text/css">
+               ul.board {
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+               }
+               ul.board li {
+                  margin: 5px;
+                  margin-top: 20px;
+                  margin-top: 20px;
+                  border-radius: 5px;
+                  height: 120px;
+                  font-size: 18px;
+                  background: #fcfcfc;
+                  padding: 10px;
+               }
+               ul.board li span {
+                  color: #fff;
+               }
+               span.create-board {
+                color: #9d9d9d !important;
+               }
+               .bg-blue {
+                background: #0085ff !important;
+               }
+             </style>
 <!-- jQuery -->
 <script src="<?=$this->baseUrl()?>plugins/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -113,7 +130,7 @@
               <ul class="nav nav-second-level">
                 <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
         </ul>
-        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+        <li><a href="/board/" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
               <ul class="nav nav-second-level">
                 <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
         </ul>
@@ -125,96 +142,69 @@
     <div id="page-wrapper">
         <div class="container-fluid">
            <div class="col-md-12"></div>
-             <style type="text/css">
-               ul.board {
-                  list-style: none;
-                  padding: 0;
-                  margin: 0;
-               }
-               ul.board li {
-                  margin: 5px;
-                  border-radius: 5px;
-                  height: 120px;
-                  font-size: 18px;
-                  background: #fcfcfc;
-                  padding: 10px;
-               }
-               ul.board li span {
-                  color: #fff;
-               }
-               span.create-board {
-                color: #9d9d9d !important;
-               }
-               .bg-blue {
-                background: #0085ff !important;
-               }
-             </style>
-                        <div class="col-md-12"></div>
-                           <div class="row active">
-                              <div class="col-sm-12">
-                                  <ul class="board">
-                                    <?php foreach($boards as $board): ?>
-                                    <a href="list/<?= $board->id; ?>">
-                                      <li class="board-list bg-blue text-white white-box bg-blue m-t-12 collapseble col-md-3">
-                                        <span><?= $board->boardname; ?></span>
-                                      </li>
-                                    </a>
-                                  <?php endforeach; ?>
-                                    <a href="#">
-                                      <li class="board-list white-box btn m-t-12 collapseble col-md-3">
-                                        <center><span class="create-board board-default">Create New Board</span></center>
-                                      </li>
-                                    </a>
-                                  </ul>
-                                  <!-- <div class="white-box text-center bg-purple"> -->
-                                    <div class="m-t-15 collapseblebox dn" style="display: none;">
-                                      <div class="row active">
-                                        <div class="col-sm-4" style="display: block;">
-                                          <div class="panel panel-info">
-                                            <div class="panel-heading"> Create Board 
-                                              <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
-                                            </div>
-                                            <div class="panel-wrapper collapse in" aria-expanded="true">
-                                              <div class="panel-body">
-                                                  <form action="<?= $this->pathFor('save-board'); ?>" method="POST">
-                                                      <div class="form-body">
-                                                          <div class="row">
-                                                              <div class="col-md-12">
-                                                                  <div class="form-group">
-                                                                    <label class="control-label">Tittle</label>
-                                                                    <input type="text" id="firstName" class="form-control" placeholder="John doe" name="boardname">
-                                                                  </div>
-                                                              <div class="form-group">
-                                                                <label class="control-label">Team</label>
-                                                                  <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                    </div>
-                                                    <div class="form-actions">
-                                                        <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
-                                                    </div>
-                                                  </form>
-<<<<<<< HEAD
-=======
-<!-- >>>>>>> upstream/master -->
->>>>>>> upstream/master
-                                              </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
-                            </div>
-                        </div>
-                           
-
-        <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
-        </div>
-      <!-- /#page-wrapper -->
+             
+<div class="col-md-12"></div>
+<div class="row active">
+  <div class="col-sm-12">
+    <div style=" font-size:25px; margin: 5px; margin-top: 20px;"">
+    <span><i class="ti-user fa-fw"></i> Personal Board</span>
     </div>
+    <ul class="board">
+      <?php foreach($boards as $board): ?>
+        <a href="list/<?= $board->id; ?>">
+            <li class="board-list bg-blue text-white white-box bg-blue m-t-12 col-md-3">
+          <span><?= $board->boardname; ?></span>
+            </li>
+        </a>
+      <?php endforeach; ?>
+      <a href="#">
+        <li class="board-list white-box btn m-t-12 collapseble col-md-3">
+          <center><span class="create-board board-default">Create New Board</span></center>
+        </li>
+      </a>
+      <div class="m-t-12 collapseblebox dn" style="display: none;">
+      <div class="row active">
+        <div class="col-sm-3" style="display: block;">
+          <div class="panel panel-info">
+          <div class="panel-heading"> Create Board 
+          <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
+          </div>
+          <div class="panel-wrapper collapse in" aria-expanded="true">
+          <div class="panel-body">
+          <form action="<?= $this->pathFor('save-board'); ?>" method="POST">
+          <div class="form-body">
+          <div class="row">
+          <div class="col-md-12">
+          <div class="form-group">
+          <label class="control-label">Tittle</label>
+          <input type="text" id="firstName" class="form-control" placeholder="Board Name" name="boardname">
+          </div>
+          <div class="form-group">
+          <label class="control-label">Team</label>
+          <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
+          </div>
+          </div>
+          </div>
+          </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
+            </div>
+          </form>
+          </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </ul>
+    
+  </div>
+  <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
 </div>
+</div>
+</div>
+      <!-- /#page-wrapper -->
+
 <!-- /#wrapper -->
 
 
