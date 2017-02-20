@@ -146,7 +146,7 @@
                 color: #9d9d9d !important;
                }
                .bg-blue {
-                background: #0085ff !important;
+                background: #888888 !important;
                }
              </style>
                         <div class="col-md-12"></div>

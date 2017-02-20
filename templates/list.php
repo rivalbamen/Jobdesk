@@ -66,7 +66,6 @@
     background: #0085ff !important;
    }
 </style>
-
 </head>
 <body>
 <!-- Preloader -->
@@ -135,9 +134,13 @@
               <label class="control-label"><?= $list->listname; ?></label>
                <div class="panel-action"><a href="#" data-perform="panel-collapse">
               <div class="myadmin-dd dd" id="nestable">
-                <ol class="dd-list">
+                <ol id="card-list" class="dd-list">
                   <li class="dd-item" data-id="1">
-                    <div class="dd-handle"> cek</div>
+                      <?php foreach ($list->details as $card):
+
+                        ?>
+                          <div class="dd-handle"><?= $card->cardname;?></div>
+                      <?php endforeach; ?>
                   </li>
                     <a class="btn btn-block btn-default m-t-10 collapseble">Add a List ...</a>
                     <form action="<?= $this->pathFor('save-card'); ?>" method="POST">

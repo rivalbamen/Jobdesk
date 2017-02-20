@@ -7,11 +7,11 @@ use Slim\Http\Response;
 use App\Controller\Controller;
 use App\Model\Card;
 
-class cardController extends Controller
+class CardController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
 	{
-		$data['cards'] = Card::all();
+		$data['cards'] = Card::where('list', $args['id'])->get();
 		$data['title'] = "Task Manager";
 
 		return $this->renderer->render($response, 'card', $data);
