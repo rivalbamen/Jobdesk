@@ -29,6 +29,11 @@ $app->group('/migrate', function() {
 	});
 });
 
+$app->group('/login', function () {
+    $this->get('/', App\Controller\UserController::class.':login')->setName('login');
+    $this->post('/check', App\Controller\UserController::class.':checkuser')->setName('check-user');
+});
+
 $app->group('/user', function() {
 	$this->get('/', App\Controller\UserController::class)->setName('tampil-user');
 	$this->get('/add', App\Controller\UserController::class.':form')->setName('form-user');

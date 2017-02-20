@@ -38,7 +38,6 @@ class ListController extends Controller
 	public function save(Request $request, Response $response, Array $args)
 	{
 		$postData = $request->getParsedBody();
-		var_dump($postData);
 		 // insert
         if ($postData['id'] == '') {
         	$this->session->setFlash('success', 'List Berhasil Dibuat');

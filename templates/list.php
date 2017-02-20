@@ -20,6 +20,8 @@
 <!-- Footable CSS -->
 <link href="<?=$this->baseUrl()?>plugins/bower_components/footable/css/footable.core.css" rel="stylesheet">
 <link href="<?=$this->baseUrl()?>plugins/bower_components/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+<!-- xeditable css -->
+<link href="<?=$this->baseUrl()?>plugins/bower_components/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" />
 <!-- Select 2 -->
 <link href="<?=$this->baseUrl()?>plugins/bower_components/custom-select/custom-select.css" rel="stylesheet" type="text/css" />
 <link href="<?=$this->baseUrl()?>plugins/bower_components/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
@@ -38,6 +40,8 @@
 <link href="<?=$this->baseUrl()?>css/style.css" rel="stylesheet">
 <!-- color CSS -->
 <link href="<?=$this->baseUrl()?>css/colors/blue.css" id="theme"  rel="stylesheet">
+
+
 
 <!-- jQuery -->
 <script src="<?=$this->baseUrl()?>plugins/bower_components/jquery/dist/jquery.min.js"></script>
@@ -65,6 +69,11 @@
    .bg-blue {
     background: #0085ff !important;
    }
+   .myadmin-dd .dd-list .dd-item .dd-handle {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 </style>
 </head>
 <body>
@@ -92,58 +101,65 @@
       </ul>
     </div>
   </nav>
-  <!-- Left navbar-header -->
+
+<!-- Left navbar-header -->
   <div class="navbar-default sidebar hidden-print" role="navigation">
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
-            <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-                <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-                    </span>
-                </div>
-            </li>  
-            <li><a href="#" class="waves-effect"><i class="ti-user fa-fw"></i> <span class="hide-menu">User<span class="fa arrow"></span></span></a>
-        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+            
+        <li><a href="/board/" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+              <ul class="nav nav-second-level">
+                <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
+        </ul>
     </div>
   </div>
+<!-- Left navbar-header end -->
 
   <!-- Page Content -->
     <div id="page-wrapper" style="min-height: 601px;">
     <!-- content -->
+
     <div class="container-fluid">
-    <!-- menu title -->
       <div class="row bg-title">
         <div class="col-sm-2 col-xs-9">
-          <a class="btn btn-block btn-outline btn-rounded btn-info"><span><?php echo @$boards->boardname; ?></span></a>
+          <a href="#" id="inline-filename" data-type="text" data-pk="1" data-title="Enter filename" class="editable editable-click" style="display: inline;"><span><?php echo @$boards->boardname; ?></span></a>
         </div>
-        <div class="col-sm-2 col-lg-1 col-xs-9">
-          <a class="btn btn-block btn-outline btn-rounded btn-info"><span class="ti-lock"> Private</span></a>
-        </div>
-        <div class="col-lg-9 col-md-8 col-xs-12">
+<!--         <div class="col-lg-10 col-md-8 col-xs-12">
           <ol class="breadcrumb">
             <li><a href="#">Show Menu</a></li>
           </ol>
-        </div>
+        </div> -->
       </div>
       <!-- isi content -->
       <?php foreach($lists as $list): ?>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="white-box">
-              <label class="control-label"><?= $list->listname; ?></label>
+              <a href="#" id="inline-namecard-<?= $list->id; ?>" data-type="text" data-pk="1" data-title="Enter namecard" class="editable editable-click" style="display: inline;"><?= $list->listname; ?></a>
+              <script type="text/javascript">
+              $(function(){
+
+                   $('#inline-namecard-<?= $list->id; ?>').editable({
+                   type: 'text',
+                   pk: 1,
+                   name: 'namecard',
+                   title: 'Enter namecard',
+                   mode: 'inline'
+                 });
+
+                });
+              </script>
                <div class="panel-action"><a href="#" data-perform="panel-collapse">
               <div class="myadmin-dd dd" id="nestable">
                 <ol id="card-list" class="dd-list">
-                  <li class="dd-item" data-id="1">
+                  <li class="dd-item " data-id="1">
                       <?php foreach ($list->details as $card):
                         ?>
-                          <div class="dd-handle"><?= $card->cardname;?></div>
+                          <div class="dd-handle btn-block btn-default"><?= $card->cardname;?></div>
                       <?php endforeach; ?>
                   </li>
-                    <a class="btn btn-block btn-default m-t-10 collapseble">Add a Card ...</a>
+                    <a class="btn btn-block btn-default m-t-10 show-<?= $list->id; ?>">Add a Card ...</a>
                     <form action="<?= $this->pathFor('save-card'); ?>" method="POST">
-                      <div class="m-t-15 collapseblebox dn" style="display: none;">
+                      <div class="m-t-15 lihat-<?= $list->id; ?> dn" style="display: none;">
                           <input type="text" name="board" value="<?php echo @$boards->id ?>" class="hidden">
                           <input type="text" name="idlist" class="hidden" value="<?= $list->id; ?>">
                           <textarea class="form-control form-control-line" name="cardname" rows="3"></textarea>
@@ -155,6 +171,13 @@
               </div>
             </div>
           </div>
+          <script>
+            $(document).ready(function(){
+                $("a.show-<?= $list->id; ?>").click(function(){
+                    $(".lihat-<?= $list->id; ?>").toggle();
+                });
+            });
+          </script>
         <?php endforeach; ?>
         <div class="col-sm-3 col-xs-12">
             <button type="button" class="btn btn-block btn-rounded btn-default showtop" data-target="#add-list" data-toggle="modal">Add a List ...</button>
@@ -175,7 +198,6 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-info">Save</button>
-                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
                 </div>
@@ -244,6 +266,30 @@
 <script src="<?=$this->baseUrl()?>plugins/bower_components/nestable/jquery.nestable.js"></script>
 
 <noscript>&lt;img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=m/hBm1akKd60bm" style="display:none" height="1" width="1" alt=""&gt;</noscript>
+
+<!-- Rename File -->
+<script type="text/javascript" src="<?=$this->baseUrl()?>plugins/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<script type="text/javascript">
+$(function(){
+  //inline
+     $('#inline-filename').editable({
+     type: 'text',
+     pk: 1,
+     name: 'filename',
+     title: 'Enter filename',
+     mode: 'inline'
+   });
+
+     $('#inline-namecard').editable({
+     type: 'text',
+     pk: 1,
+     name: 'namecard',
+     title: 'Enter namecard',
+     mode: 'inline'
+   });
+
+  });
+</script>
 
 <script type="text/javascript">
 var isconfirming = false;
