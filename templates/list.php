@@ -82,7 +82,7 @@
       <ul class="nav navbar-top-links navbar-right pull-right">
         
         <!-- /.dropdown -->
-        <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="http://localhost:8080/plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
+        <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
           <ul class="dropdown-menu dropdown-user animated flipInY">
             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
             <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
@@ -137,12 +137,11 @@
                 <ol id="card-list" class="dd-list">
                   <li class="dd-item" data-id="1">
                       <?php foreach ($list->details as $card):
-
                         ?>
                           <div class="dd-handle"><?= $card->cardname;?></div>
                       <?php endforeach; ?>
                   </li>
-                    <a class="btn btn-block btn-default m-t-10 collapseble">Add a List ...</a>
+                    <a class="btn btn-block btn-default m-t-10 collapseble">Add a Card ...</a>
                     <form action="<?= $this->pathFor('save-card'); ?>" method="POST">
                       <div class="m-t-15 collapseblebox dn" style="display: none;">
                           <input type="text" name="board" value="<?php echo @$boards->id ?>" class="hidden">
@@ -166,7 +165,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">Add List</h4></div>
+                        <h4 class="modal-title" id="myModalLabel">Add a List</h4></div>
                     <div class="modal-body">
                         <form action="<?= $this->pathFor('save-list'); ?>" method="POST">
                             <div class="form-group">
@@ -176,8 +175,8 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-info">Save</button>
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                         </form>
-                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
                 </div>
@@ -247,7 +246,6 @@
 <noscript>&lt;img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=m/hBm1akKd60bm" style="display:none" height="1" width="1" alt=""&gt;</noscript>
 
 <script type="text/javascript">
-
 var isconfirming = false;
   // load a language
   //numeral setting
@@ -269,11 +267,8 @@ var isconfirming = false;
           symbol: 'Rp'
       }
   });
-
   // switch between languages
   numeral.language('id');
-
-
 </script>
 <!--Style Switcher -->
 <!-- <script src="<?=$this->baseUrl()?>plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script> -->
