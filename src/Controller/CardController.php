@@ -5,14 +5,23 @@ namespace App\Controller;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
-use App\Model\Card;
+use App\Model\Cards;
+use App\Model\Lists;
+use App\Model\Board;
 
-class cardController extends Controller
+class CardController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
 	{
-		$data['cards'] = Card::all();
+		$data['cards'] = Cards::all();
 		$data['title'] = "Task Manager";
+
+		if(isset($args['id'])){
+			$data['lists'] = Board::find($args['id']);
+			if(isset($args['id'])){
+				$data['boards'] = Board::find($args['id']);
+			}
+		}
 
 		return $this->renderer->render($response, 'card', $data);
 	}
@@ -26,7 +35,7 @@ class cardController extends Controller
 		}
 
 		if(isset($args['id']))
-			$data['card'] = Card::find($args['id']);
+			$data['card'] = Cards::find($args['id']);
 
 
 		$data['title'] = "Form Card";
@@ -45,7 +54,7 @@ class cardController extends Controller
         } else {
         // update
         	$this->session->setFlash('success', 'Card Berhasil Diperbaharui');
-            $card = Card::find($postData['id']);
+            $card = Cards::find($postData['id']);
         }
 
         $card->id = $postData['id'];
@@ -54,13 +63,14 @@ class cardController extends Controller
 
         $card->save();
 
+        return $response->withRedirect('/list/card/'.$list->board);
         return $response->withRedirect('/board/list/'.$postData['board']);
 
 	}
 
 	public function delete(Request $request, Response $response, Array $args)
 	{
-		$card = Card::find($args['id']);
+		$card = Cards::find($args['id']);
 		$card->delete();
 		$this->session->setFlash('success', 'card Terhapus');
 		return $response->withRedirect($this->router->pathFor('tampil-card'));

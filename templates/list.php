@@ -106,7 +106,8 @@
                 </div>
             </li>  
             <li><a href="#" class="waves-effect"><i class="ti-user fa-fw"></i> <span class="hide-menu">User<span class="fa arrow"></span></span></a>
-        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+        <li><a href="/board/
+        " class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
     </div>
   </div>
 
@@ -137,6 +138,11 @@
               <div class="myadmin-dd dd" id="nestable">
                 <ol class="dd-list">
                   <li class="dd-item" data-id="1">
+
+                  <?php foreach ($cards as $card): ?>
+                    <div class="dd-handle"><?= $card->cardname; ?></div>
+                  <?php endforeach; ?>
+
                     <div class="dd-handle"> cek</div>
                   </li>
                     <a class="btn btn-block btn-default m-t-10 collapseble">Add a List ...</a>
@@ -244,7 +250,6 @@
 <noscript>&lt;img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=m/hBm1akKd60bm" style="display:none" height="1" width="1" alt=""&gt;</noscript>
 
 <script type="text/javascript">
-
 var isconfirming = false;
   // load a language
   //numeral setting
@@ -266,11 +271,8 @@ var isconfirming = false;
           symbol: 'Rp'
       }
   });
-
   // switch between languages
   numeral.language('id');
-
-
 </script>
 <!--Style Switcher -->
 <!-- <script src="<?=$this->baseUrl()?>plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script> -->
