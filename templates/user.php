@@ -1,3 +1,6 @@
+<?php 
+echo $_SESSION['username'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +70,7 @@
       <ul class="nav navbar-top-links navbar-right pull-right">
         
         <!-- /.dropdown -->
-        <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="http://localhost:8080/plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
+        <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
           <ul class="dropdown-menu dropdown-user animated flipInY">
             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
             <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
@@ -103,14 +106,23 @@
         </ul>
     </div>
   </div>
-
+  <style type="text/css">
+    .white-box {
+    background: #ffffff;
+    margin: 0;
+    padding: 25px;
+    width: auto;
+    margin-bottom: 15px;
+    border-radius: 0;
+    }
+  </style>
   <!-- Left navbar-header end -->
   <!-- Page Content -->
     <div id="page-wrapper" style="min-height: 601px;">
     <div class="container-fluid">
       <div class="row bg-title">
         <div class="col-sm-2 col-xs-9">
-          <a class="btn btn-block btn-outline btn-rounded btn-info"><span>Task Manager</span></a>
+          <a class="btn btn-block btn-outline btn-rounded btn-info"><span><?=$title?></span></a>
         </div>
         <div class="col-sm-2 col-lg-1 col-xs-9">
           <a class="btn btn-block btn-outline btn-rounded btn-info"><span class="ti-lock"> Private</span></a>
@@ -122,78 +134,34 @@
         </div>
       </div>
       <div class="row">
-      <div class="col-md-4">
+        <div class="col-sm-12">
           <div class="white-box">
-            <h3 class="box-title">Task Manager</h3>
-            <div class="myadmin-dd dd" id="nestable">
-              <ol class="dd-list">
-                <li class="dd-item" data-id="">
-                  <div class="dd-handle"> Item 1 </div>
-                </li>
-                <li class="dd-item" data-id="2"><button data-action="collapse" type="button">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                  <div class="dd-handle"> Item 2 </div>
-                  <ol class="dd-list">
-                    <li class="dd-item" data-id="3">
-                      <div class="dd-handle"> Item 3 </div>
-                    </li>
-                    <li class="dd-item" data-id="4">
-                      <div class="dd-handle"> Item 4 </div>
-                    </li>
-                    <li class="dd-item" data-id="5"><button data-action="collapse" type="button">Collapse</button><button data-action="expand" type="button" style="display: none;">Expand</button>
-                      <div class="dd-handle"> Item 5 </div>
-                      <ol class="dd-list">
-                        <li class="dd-item" data-id="6">
-                          <div class="dd-handle"> Item 6 </div>
-                        </li>
-                        <li class="dd-item" data-id="7">
-                          <div class="dd-handle"> Item 7 </div>
-                        </li>
-                        <li class="dd-item" data-id="8">
-                          <div class="dd-handle"> Item 8 </div>
-                        </li>
-                      </ol>
-                    </li>
-                    <li class="dd-item" data-id="9">
-                      <div class="dd-handle"> Item 9 </div>
-                    </li>
-                    <li class="dd-item" data-id="10">
-                      <div class="dd-handle"> Item 10 </div>
-                    </li>
-                  </ol>
-                </li>
-              </ol>
-            </div>
+            <h3 class="box-title m-b-0">Data Users</h3>
+             <p class="text-muted m-b-20"><a href="<?php echo $this->pathFor('form-user'); ?>" class="btn btn-primary">Tambah</a></p>
+            <table id="myTable" class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>username</th>
+                  <th>role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach($users as $user): ?>
+                <tr>
+                  <td class="text-nowrap">
+                      <a href="<?php echo $this->pathFor('update-user', ['id' => $user->id]) ?>" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i></a>
+                      <a href="<?php echo $this->pathFor('delete-user', ['id' => $user->id]) ?>" data-toggle="tooltip" data-original-title="Hapus"> <i class="fa fa-close text-danger m-r-10"></i> </a>
+                  </td>
+                  <td><?= $user->username; ?></td>
+                  <td><?php if($user->role==0){ echo "User"; } else { echo "Administrator";} ?></td>
+                </tr>
+              <?php endforeach; ?>
+              </tbody>
+            </table>
           </div>
         </div>
-        </div>
-        <!-- <div class="col-md-4">
-          <div class="panel panel-info">
-                                <div class="panel-wrapper collapse in" aria-expanded="true">
-                                  <div class="panel-body">
-                                      <form action="#">
-                                          <div class="form-body">
-                                              <div class="row">
-                                                  <div class="col-md-12">
-                                                      <div class="form-group">
-                                                        <label class="control-label">Title</label>
-                                                        <input type="text" id="firstName" class="form-control" placeholder="Input Title">
-                                                      </div>
-                                                  <div class="form-group">
-                                                    <label class="control-label">Team</label>
-                                                      <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
-                                                  </div>
-                                                </div>
-                                              </div>
-                                        </div>
-                                        <div class="form-actions">
-                                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
-                                        </div>
-                                      </form>
-                                  </div>
-                              </div>
-                                    </div>
-        </div> -->
-      <!-- <form><span class="placeholder js-open-add-list">Add a list…</span><input class="list-name-input" type="text" name="name" placeholder="Add a list…" autocomplete="off" dir="auto" maxlength="512"><div class="list-add-controls u-clearfix"><input class="primary mod-list-add-button js-save-edit" type="submit" value="Save"><a class="icon-lg icon-close dark-hover js-cancel-edit" href="#"></a></div></form> -->
+      </div>
       <!-- .right-sidebar -->
       <div class="right-sidebar">
         <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="slimscrollright" style="overflow: hidden; width: auto; height: 100%;">
@@ -293,97 +261,46 @@
 
 <script src="<?=$this->baseUrl()?>js/numeral.js"></script>
 <script src="<?=$this->baseUrl()?>plugins/bower_components/nestable/jquery.nestable.js"></script>
-<script type="text/javascript">
+<script>
+    $(document).ready(function(){
+      $('#myTable').DataTable();
+      $(document).ready(function() {
+        var table = $('#example').DataTable({
+          "columnDefs": [
+          { "visible": false, "targets": 2 }
+          ],
+          "order": [[ 2, 'asc' ]],
+          "displayLength": 25,
+          "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
 
-var isconfirming = false;
-  // load a language
-  //numeral setting
-  numeral.language('id', {
-      delimiters: {
-          thousands: '.',
-          decimal: ','
-      },
-      abbreviations: {
-          thousand: 'k',
-          million: 'm',
-          billion: 'b',
-          trillion: 't'
-      },
-      ordinal : function (number) {
-          return number === 1 ? 'er' : 'ème';
-      },
-      currency: {
-          symbol: 'Rp'
+            api.column(2, {page:'current'} ).data().each( function ( group, i ) {
+              if ( last !== group ) {
+                $(rows).eq( i ).before(
+                  '<tr class="group"><td colspan="5">'+group+'</td></tr>'
+                  );
+
+                last = group;
+              }
+            } );
+          }
+        } );
+
+    // Order by the grouping
+    $('#example tbody').on( 'click', 'tr.group', function () {
+      var currentOrder = table.order()[0];
+      if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+        table.order( [ 2, 'desc' ] ).draw();
       }
-  });
-
-  // switch between languages
-  numeral.language('id');
-
-
-   $(document).ready(function() {
-
-    //   var updateOutput = function(e) {
-    //     var list   = e.length ? e : $(e.target),
-    //         output = list.data('output');
-    //     if (window.JSON) {
-    //         output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
-    //     } else {
-    //         output.val('JSON browser support required for this demo.');
-    //     }
-    // };
-    
-    // $('#nestable').nestable({group: 1}).on('change', updateOutput);
-    
-    // $('#nestable2').nestable({group: 1}).on('change', updateOutput);
-    
-    // updateOutput($('#nestable').data('output', $('#nestable-output')));
-    // updateOutput($('#nestable2').data('output', $('#nestable2-output')));
-
-    // $('#nestable-menu').on('click', function(e)  {
-    //     var target = $(e.target),
-    //         action = target.data('action');
-    //     if (action === 'expand-all') {
-    //         $('.dd').nestable('expandAll');
-    //     }
-    //     if (action === 'collapse-all') {
-    //         $('.dd').nestable('collapseAll');
-    //     }
-    // });
-
-    // $('#nestable-menu').nestable();
-      
-      // $('.fa-close').parent().click(function(event) {
-      //       return confirm('Klik ok untuk menghapus');
-      //     });
-      // $('.myDataTable').on( 'init.dt', function () {
-      //     //delete confirmation
-      //     console.log($(this).find('.fa-close').parent().get());
-      //       $(this).find('.fa-close').parent().unbind( "click" );
-
-      //       $(this).find('.fa-close').parent().click(function(event) {
-
-      //         return confirm('Klik ok untuk menghapus');
-      //       });
-
-      // } ).DataTable({
-      //   "order": []
-      // }); //paging causing confusion
-      // $('.footable').footable();
-      // $(".select2").select2();
-      // $('.input-daterange').datepicker({
-      //   toggleActive: true
-      // });
-      // $('.mydatepicker').datepicker({
-      //   autoclose:true,
-      //   ignoreReadonly: false
-      // });
-      // $('.clockpicker').clockpicker({
-      //     donetext: 'Done',
-      // });
+      else {
+        table.order( [ 2, 'asc' ] ).draw();
+      }
+    } );
+  } );
     });
-
-</script>
+  </script>
 <!--Style Switcher -->
 <!-- <script src="<?=$this->baseUrl()?>plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script> -->
 <!-- Footable -->

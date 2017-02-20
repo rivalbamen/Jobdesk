@@ -115,7 +115,16 @@
         </ul>
     </div>
   </div>
-
+   <style type="text/css">
+      .white-box {
+      background: #ffffff;
+      margin: 0;
+      padding: 25px;
+      width: auto;
+      margin-bottom: 15px;
+      border-radius: 0;
+      }
+  </style>
   <!-- Left navbar-header end -->
   <!-- Page Content -->
     <div id="page-wrapper">

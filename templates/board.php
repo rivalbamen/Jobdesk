@@ -60,8 +60,8 @@
                span.create-board {
                 color: #9d9d9d !important;
                }
-               .bg-blue {
-                background: #0085ff !important;
+               .background {
+                background: #39677b !important;
                }
              </style>
 <!-- jQuery -->
@@ -82,12 +82,6 @@
       <div class="top-left-part"><a class="logo"  href="#"><b><img src="<?=$this->baseUrl()?>plugins/images/harmonipermana-logo.png" width="150" alt="home" /></b><span class="hidden-xs"></span></a></div>
       <ul class="nav navbar-top-links navbar-left hidden-xs">
         <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
-        <!--<li>
-          <form role="search" class="app-search hidden-xs">
-            <input type="text" placeholder="Search..." class="form-control">
-            <a href=""><i class="fa fa-search"></i></a>
-          </form>
-        </li>-->
       </ul>
       <ul class="nav navbar-top-links navbar-right pull-right">
         <li class="dropdown">
@@ -95,116 +89,150 @@
                 <img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle">
                 <b class="hidden-xs"> Admin</b>
             </a>
-          <ul class="dropdown-menu dropdown-user animated">
-            <!--<li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-            <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-            <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-            <li role="separator" class="divider"></li>-->
-            <li><a href="#>"><i class="fa fa-power-off"></i> Logout</a></li>
+            <ul class="dropdown-menu dropdown-user animated">
+              <li><a href="#>"><i class="fa fa-power-off"></i> Logout</a></li>
           </ul>
-          <!-- /.dropdown-user -->
         </li>
-        <!-- /.dropdown -->
       </ul>
     </div>
-    <!-- /.navbar-header -->
-    <!-- /.navbar-top-links -->
-    <!-- /.navbar-static-side -->
   </nav>
+
   <!-- Left navbar-header -->
   <div class="navbar-default sidebar hidden-print" role="navigation">
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
-            <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-                <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-                    </span>
-                </div>
-            </li>
             
-            <li><a href="#" class="waves-effect"><i class="ti-user fa-fw"></i> <span class="hide-menu">User<span class="fa arrow"></span></span></a>
-              <ul class="nav nav-second-level">
-                <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
-        </ul>
         <li><a href="/board/" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
               <ul class="nav nav-second-level">
                 <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
         </ul>
     </div>
   </div>
-
   <!-- Left navbar-header end -->
-  <!-- Page Content -->
-    <div id="page-wrapper">
-        <div class="container-fluid">
-           <div class="col-md-12"></div>
-             
-<div class="col-md-12"></div>
-<div class="row active">
-  <div class="col-sm-12">
-    <div style=" font-size:25px; margin: 5px; margin-top: 20px;"">
-    <span><i class="ti-user fa-fw"></i> Personal Board</span>
-    </div>
-    <ul class="board">
-      <?php foreach($boards as $board): ?>
-        <a href="list/<?= $board->id; ?>">
-            <li class="board-list bg-blue text-white white-box bg-blue m-t-12 col-md-3">
-          <span><?= $board->boardname; ?></span>
-            </li>
-        </a>
-      <?php endforeach; ?>
-      <a href="#">
-        <li class="board-list white-box btn m-t-12 collapseble col-md-3">
-          <center><span class="create-board board-default">Create New Board</span></center>
-        </li>
-      </a>
-      <div class="m-t-12 collapseblebox dn" style="display: none;">
-      <div class="row active">
-        <div class="col-sm-3" style="display: block;">
-          <div class="panel panel-info">
-          <div class="panel-heading"> Create Board 
-          <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
-          </div>
-          <div class="panel-wrapper collapse in" aria-expanded="true">
-          <div class="panel-body">
-          <form action="<?= $this->pathFor('save-board'); ?>" method="POST">
-          <div class="form-body">
-          <div class="row">
-          <div class="col-md-12">
-          <div class="form-group">
-          <label class="control-label">Tittle</label>
-          <input type="text" id="firstName" class="form-control" placeholder="Board Name" name="boardname">
-          </div>
-          <div class="form-group">
-          <label class="control-label">Team</label>
-          <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
-          </div>
-          </div>
-          </div>
-          </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
+
+<div id="page-wrapper" style="min-height: 601px;">
+    <div class="container-fluid">
+      <!-- .row -->
+      <div class="row">
+       <ul class="board">
+            <div class="col-md-3">
+              <?php foreach($boards as $board): ?>
+              <a href="list/<?= $board->id; ?>">
+                <li class="board-list background text-white white-box bg-blue ">
+                  <span><?= $board->boardname; ?></span>
+                </li>
+              </a>
+              </div>
+              <div class="col-md-3">
+            <?php endforeach; ?>
+              <a href="#" data-perform="panel-collapse">
+                <li class="board-list white-box btn collapseble col-md-11">
+                  <span class="create-board board-default">Create New Board</span>
+                </li>
+              </a>
+              </div>
+            </ul>
+      </div>
+
+<!-- tampilan form add board -->
+<div class="row">
+  <div class="col-md-10">
+      <div class="m-t-15 collapseblebox dn" style="display: none;">
+          <div class="row active">
+            <div class="col-sm-4" style="display: block;">
+              <div class="panel panel-info">
+                <div class="panel-heading"> Create Board 
+                  <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a></div>
+                </div>
+                <div class="panel-wrapper collapse in" aria-expanded="true">
+                  <div class="panel-body">
+                      <form action="<?= $this->pathFor('save-board'); ?>" method="POST">
+                          <div class="form-body">
+                              <div class="row">
+                                  <div class="form-group">
+                                    <label class="control-label">Tittle</label>
+                                    <input type="text" id="firstName" class="form-control" placeholder="add your board name . . ." name="boardname">
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="control-label">Team</label>
+                                      <p>Teams make sharing and working within a group even easier. It doesn’t look like you are a member of any teams.</p>
+                                  </div>
+                              </div>
+                        </div>
+                          <div class="form-actions">
+                              <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Create</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
             </div>
-          </form>
-          </div>
-          </div>
           </div>
         </div>
       </div>
-    </div>
-    </ul>
-    
   </div>
-  <footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
 </div>
+<!-- akhir tampilan form add board -->
+
+                    
+<footer class="footer text-center"> <strong>Hospitality Platform</strong> &copy; <?=date('Y')?></footer>
+    </div>
 </div>
-</div>
+      <!-- /.row -->
+      
+      <!-- .right-sidebar -->
+      <div class="right-sidebar">
+        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="slimscrollright" style="overflow: hidden; width: auto; height: 100%;">
+          <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+          <div class="r-panel-body">
+            <ul>
+              <li><b>Layout Options</b></li>
+              
+              <li>
+                <div class="checkbox checkbox-info">
+                  <input id="checkbox1" type="checkbox" class="fxhdr">
+                  <label for="checkbox1"> Fix Header </label>
+                </div>
+              </li>
+            </ul>
+            <ul id="themecolors" class="m-t-20">
+              <li><b>With Light sidebar</b></li>
+              <li><a href="javascript:void(0)" theme="default" class="default-theme">1</a></li>
+              <li><a href="javascript:void(0)" theme="green" class="green-theme">2</a></li>
+              <li><a href="javascript:void(0)" theme="gray" class="yellow-theme">3</a></li>
+              <li><a href="javascript:void(0)" theme="blue" class="blue-theme">4</a></li>
+              <li><a href="javascript:void(0)" theme="purple" class="purple-theme">5</a></li>
+              <li><a href="javascript:void(0)" theme="megna" class="megna-theme working">6</a></li>
+              <li><b>With Dark sidebar</b></li>
+              <br>
+              <li><a href="javascript:void(0)" theme="default-dark" class="default-dark-theme">7</a></li>
+              <li><a href="javascript:void(0)" theme="green-dark" class="green-dark-theme">8</a></li>
+              <li><a href="javascript:void(0)" theme="gray-dark" class="yellow-dark-theme">9</a></li>
+
+              <li><a href="javascript:void(0)" theme="blue-dark" class="blue-dark-theme">10</a></li>
+              <li><a href="javascript:void(0)" theme="purple-dark" class="purple-dark-theme">11</a></li>
+              <li><a href="javascript:void(0)" theme="megna-dark" class="megna-dark-theme">12</a></li>
+            </ul>
+            <ul class="m-t-20 chatonline">
+              <li><b>Chat option</b></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/ritesh.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/arijit.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/govinda.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/hritik.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/john.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a></li>
+              <li><a href="javascript:void(0)"><img src="../plugins/images/users/pawandeep.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a></li>
+            </ul>
+          </div>
+        </div><div class="slimScrollBar" style="background: rgb(220, 220, 220); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+      </div>
+      <!-- /.right-sidebar -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
       <!-- /#page-wrapper -->
 <!-- /#wrapper -->
+
 <!-- Bootstrap Core JavaScript -->
 <script src="<?=$this->baseUrl()?>bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Menu Plugin JavaScript -->
