@@ -52,10 +52,6 @@ $app->group('/board', function() {
 });
 
 
-	$this->post('/save-card', App\Controller\CardController::class.':save')->setName('save-card');
-
-});
-
 // // $app->group('/list', function() {
 // 	$this->get('/', App\Controller\BoardController::class)->setName('tampil-list');
 // 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');

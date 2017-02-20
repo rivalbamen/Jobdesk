@@ -66,7 +66,6 @@
     background: #0085ff !important;
    }
 </style>
-
 </head>
 <body>
 <!-- Preloader -->
@@ -83,7 +82,7 @@
       <ul class="nav navbar-top-links navbar-right pull-right">
         
         <!-- /.dropdown -->
-        <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="http://localhost:8080/plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
+        <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
           <ul class="dropdown-menu dropdown-user animated flipInY">
             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
             <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
@@ -106,8 +105,7 @@
                 </div>
             </li>  
             <li><a href="#" class="waves-effect"><i class="ti-user fa-fw"></i> <span class="hide-menu">User<span class="fa arrow"></span></span></a>
-        <li><a href="/board/
-        " class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
     </div>
   </div>
 
@@ -131,20 +129,17 @@
       </div>
       <!-- isi content -->
       <?php foreach($lists as $list): ?>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="white-box">
               <label class="control-label"><?= $list->listname; ?></label>
                <div class="panel-action"><a href="#" data-perform="panel-collapse">
               <div class="myadmin-dd dd" id="nestable">
-                <ol class="dd-list">
+                <ol id="card-list" class="dd-list">
                   <li class="dd-item" data-id="1">
-                    
-                    <div class="dd-handle btn-block btn-default"> cek </div>
-                  <?php foreach ($cards as $card): ?>
-                    <div class="dd-handle"><?= $card->cardname; ?></div>
-                  <?php endforeach; ?>
-
-                    <div class="dd-handle"> cek</div>
+                      <?php foreach ($list->details as $card):
+                        ?>
+                          <div class="dd-handle"><?= $card->cardname;?></div>
+                      <?php endforeach; ?>
                   </li>
                     <a class="btn btn-block btn-default m-t-10 collapseble">Add a Card ...</a>
                     <form action="<?= $this->pathFor('save-card'); ?>" method="POST">
@@ -170,7 +165,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h4 class="modal-title" id="myModalLabel">Add List</h4></div>
+                        <h4 class="modal-title" id="myModalLabel">Add a List</h4></div>
                     <div class="modal-body">
                         <form action="<?= $this->pathFor('save-list'); ?>" method="POST">
                             <div class="form-group">
@@ -180,6 +175,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-info">Save</button>
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
                 </div>

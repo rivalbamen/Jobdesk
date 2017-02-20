@@ -204,10 +204,7 @@
 </div>
 </div>
       <!-- /#page-wrapper -->
-
 <!-- /#wrapper -->
-
-
 <!-- Bootstrap Core JavaScript -->
 <script src="<?=$this->baseUrl()?>bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Menu Plugin JavaScript -->
@@ -248,10 +245,8 @@
 <script src="<?=$this->baseUrl()?>plugins/bower_components/timepicker/bootstrap-timepicker.min.js"></script>
 <script src="<?=$this->baseUrl()?>plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <script src="<?=$this->baseUrl()?>plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js"></script>
-
 <script src="<?=$this->baseUrl()?>js/numeral.js"></script>
 <script type="text/javascript">
-
 var isconfirming = false;
   // load a language
   //numeral setting
@@ -273,11 +268,8 @@ var isconfirming = false;
           symbol: 'Rp'
       }
   });
-
   // switch between languages
   numeral.language('id');
-
-
    $(document).ready(function() {
       // $.toast({
       //   heading: 'Welcome to Elite admin',
@@ -286,7 +278,6 @@ var isconfirming = false;
       //   loaderBg:'#ff6849',
       //   icon: 'info',
       //   hideAfter: 3500,
-
       //   stack: 6
       // })
       //$('.myDataTable').DataTable({paging:false,pageLength:1000}); //paging causing confusion
@@ -298,12 +289,9 @@ var isconfirming = false;
           //delete confirmation
           console.log($(this).find('.fa-close').parent().get());
             $(this).find('.fa-close').parent().unbind( "click" );
-
             $(this).find('.fa-close').parent().click(function(event) {
-
               return confirm('Klik ok untuk menghapus');
             });
-
       } ).DataTable({
         "order": []
       }); //paging causing confusion
@@ -320,14 +308,12 @@ var isconfirming = false;
           donetext: 'Done',
       });
     });
-
 </script>
 <!--Style Switcher -->
 <!-- <script src="<?=$this->baseUrl()?>plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script> -->
 <!-- Footable -->
 <script src="<?=$this->baseUrl()?>plugins/bower_components/footable/js/footable.all.min.js"></script>
 <script src="<?=$this->baseUrl()?>plugins/bower_components/bootstrap-select/bootstrap-select.min.js" type="text/javascript"></script>
-
 <!-- VUEJS -->
 <script src="<?=$this->baseUrl()?>js/vue.min.js"></script>
 <script src="<?=$this->baseUrl()?>js/vue-resource.min.js"></script>
@@ -339,6 +325,5 @@ var isconfirming = false;
 <script src="<?=$this->baseUrl()?>js/app/vue.roomrates.js"></script>
 <script src="<?=$this->baseUrl()?>js/app/reservation.js"></script>
 <script src="<?=$this->baseUrl()?>js/app/logistic-purchase-request.js"></script>
-
 </body>
 </html>
