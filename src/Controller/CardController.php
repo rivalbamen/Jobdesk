@@ -64,6 +64,7 @@ class CardController extends Controller
         $card->save();
 
         return $response->withRedirect('/list/card/'.$list->board);
+        return $response->withRedirect('/board/list/'.$postData['board']);
 
 	}
 

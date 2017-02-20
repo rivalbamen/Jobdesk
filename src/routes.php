@@ -46,6 +46,35 @@ $app->group('/board', function() {
 	$this->get('/list/{id}', App\Controller\ListController::class)->setName('list-board');
 	$this->post('/save-list', App\Controller\ListController::class.':save')->setName('save-list');
 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
+
 	$this->get('/card/{id}', App\Controller\ListController::class)->setName('card-board');
 	$this->post('/save-card', App\Controller\CardController::class.':save')->setName('save-card');
 });
+
+
+	$this->post('/save-card', App\Controller\CardController::class.':save')->setName('save-card');
+
+});
+
+// // $app->group('/list', function() {
+// 	$this->get('/', App\Controller\BoardController::class)->setName('tampil-list');
+// 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
+// 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
+// 	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-list');
+// 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
+
+// });
+
+// $app->group('/card', function() {
+// 	$this->get('/', App\Controller\BoardController::class)->setName('tampil-card');
+// 	// $this->get('/add', App\Controller\BoardController::class.':form')->setName('form-board');
+// 	// $this->get('/update/{id}', App\Controller\BoardController::class.':form')->setName('update-board');
+// 	$this->post('/save', App\Controller\BoardController::class.':save')->setName('save-card');
+
+// 	// $this->get('/delete/{id}', App\Controller\BoardController::class.':delete')->setName('delete-board');
+
+// // });
+
+
+
+
