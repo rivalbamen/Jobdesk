@@ -54,6 +54,8 @@
    }
    ul.board li {
       margin: 5px;
+      margin-top: 20px;
+      margin-top: 20px;
       border-radius: 5px;
       height: 120px;
       font-size: 18px;
@@ -64,33 +66,34 @@
       color: #fff;
    }
    span.create-board {
-    color: #9d9d9d !important;
+      color: #9d9d9d !important;
    }
-   .bg-blue {
-    background: #0085ff !important;
+   .background {
+      background: #39677b !important;
    }
    .myadmin-dd .dd-list .dd-item .dd-handle {
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+  }
+  .nameBoard {
+      color: #39677b;
+      font-size: 25px;
   }
 </style>
 </head>
 <body>
-<!-- Preloader -->
+
 <div class="preloader hidden-print">
   <div class="cssload-speeding-wheel"></div>
 </div>
 <div id="wrapper">
-  <!-- HEADER -->
-
-<!-- Navigation -->
 <nav class="navbar navbar-default navbar-static-top m-b-0">
     <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
       <div class="top-left-part"><a class="logo" href="#"><b><img src="<?=$this->baseUrl()?>plugins/images/harmonipermana-logo.png" width="150" alt="home" /></b><span class="hidden-xs"></span></a></div>
       <ul class="nav navbar-top-links navbar-right pull-right">
         
-        <!-- /.dropdown -->
+        <!-- /.dropdown-user -->
         <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
           <ul class="dropdown-menu dropdown-user animated flipInY">
             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
@@ -107,9 +110,8 @@
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
             
-        <li><a href="/board/" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
-              <ul class="nav nav-second-level">
-                <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
+        <li><a href="<?=$this->pathFor('tampil-board')?>" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+                </li>
         </ul>
     </div>
   </div>
@@ -122,7 +124,7 @@
     <div class="container-fluid">
       <div class="row bg-title">
         <div class="col-sm-2 col-xs-9">
-          <a href="#" id="inline-filename" data-type="text" data-pk="1" data-title="Enter filename" class="editable editable-click" style="display: inline;"><span><?php echo @$boards->boardname; ?></span></a>
+          <a href="#" id="inline-filename" data-type="text" data-pk="1" data-title="Enter filename" class="editable editable-click nameBoard" style="display: inline;"><span><?php echo @$boards->boardname; ?></span></a>
         </div>
 <!--         <div class="col-lg-10 col-md-8 col-xs-12">
           <ol class="breadcrumb">

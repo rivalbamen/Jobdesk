@@ -52,7 +52,7 @@ class ListController extends Controller
         $list->listname = ($postData['listname']);
         $list->save();
 
-        return $response->withRedirect('/board/list/'.$list->board);
+        return $response->withRedirect('/public/board/list/'.$list->board);
 	}
 
 	public function delete(Request $request, Response $response, Array $args)
