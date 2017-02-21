@@ -39,31 +39,34 @@
 <!-- color CSS -->
 <link href="<?=$this->baseUrl()?>css/colors/blue.css" id="theme"  rel="stylesheet">
 <style type="text/css">
-               ul.board {
-                  list-style: none;
-                  padding: 0;
-                  margin: 0;
-               }
-               ul.board li {
-                  margin: 5px;
-                  margin-top: 20px;
-                  margin-top: 20px;
-                  border-radius: 5px;
-                  height: 120px;
-                  font-size: 18px;
-                  background: #fcfcfc;
-                  padding: 10px;
-               }
-               ul.board li span {
-                  color: #fff;
-               }
-               span.create-board {
-                color: #9d9d9d !important;
-               }
-               .background {
-                background: #39677b !important;
-               }
-             </style>
+       ul.board {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+       }
+       ul.board li {
+          margin: 5px;
+          margin-top: 20px;
+          margin-top: 20px;
+          border-radius: 5px;
+          height: 120px;
+          font-size: 18px;
+          background: #fcfcfc;
+          padding: 10px;
+       }
+       ul.board li span {
+          color: #fff;
+       }
+       span.create-board {
+        color: #9d9d9d !important;
+       }
+       .background {
+        background: #39677b !important;
+       }
+       .background:hover {
+        background: #20b2aa !important;
+       }
+</style>
 <!-- jQuery -->
 <script src="<?=$this->baseUrl()?>plugins/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -102,10 +105,9 @@
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
             
-        <li><a href="/board/" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
-              <ul class="nav nav-second-level">
-                <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
-        </ul>
+        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+</li>
+</ul>
     </div>
   </div>
   <!-- Left navbar-header end -->
@@ -118,7 +120,7 @@
             <div class="col-md-3">
               <?php foreach($boards as $board): ?>
               <a href="list/<?= $board->id; ?>">
-                <li class="board-list background text-white white-box bg-blue ">
+                <li class="board-list background background text-white white-box ">
                   <span><?= $board->boardname; ?></span>
                 </li>
               </a>

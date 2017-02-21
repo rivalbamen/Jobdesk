@@ -40,6 +40,7 @@ $app->group('/user', function() {
 	$this->get('/update/{id}', App\Controller\UserController::class.':form')->setName('update-user');
 	$this->post('/save', App\Controller\UserController::class.':save')->setName('save-user');
 	$this->get('/delete/{id}', App\Controller\UserController::class.':delete')->setName('delete-user');
+	$this->get('/logout', App\Controller\UserController::class.':logout')->setName('user-logout');
 
 });
 

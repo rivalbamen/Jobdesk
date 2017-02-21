@@ -1,6 +1,3 @@
-<?php 
-echo $_SESSION['username'];
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +70,7 @@ echo $_SESSION['username'];
         <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
           <ul class="dropdown-menu dropdown-user animated flipInY">
             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+            <li><a href="<?= $this->pathFor('user-logout'); ?>"><i class="fa fa-power-off"></i> Logout</a></li>
           </ul>
           <!-- /.dropdown-user -->
         </li>

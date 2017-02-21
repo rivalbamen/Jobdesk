@@ -516,7 +516,7 @@ hr {
   color: #9675ce;
 }
 .text-primary {
-  color: #ab8ce4;
+  color: #39677b;
 }
 .text-megna {
   color: #01c0c8;
@@ -1093,8 +1093,8 @@ pre {
 }
 .btn-primary,
 .btn-primary.disabled {
-  background: #ab8ce4;
-  border: 1px solid #ab8ce4;
+  background: #39677b;
+  border: 1px solid #39677b;
 }
 .btn-primary:hover,
 .btn-primary.disabled:hover,
@@ -1108,8 +1108,8 @@ pre {
 }
 .btn-success,
 .btn-success.disabled {
-  background: #00c292;
-  border: 1px solid #00c292;
+  background: #39677b;
+  border: 1px solid #39677b;
 }
 .btn-success:hover,
 .btn-success.disabled:hover,
@@ -1117,14 +1117,14 @@ pre {
 .btn-success.disabled:focus,
 .btn-success.focus,
 .btn-success.disabled.focus {
-  background: #00c292;
+  background: #2f4f4f;
   opacity: 0.8;
-  border: 1px solid #00c292;
+  border: 1px solid #2f4f4f;
 }
 .btn-info,
 .btn-info.disabled {
-  background: #03a9f3;
-  border: 1px solid #03a9f3;
+  background: #39677b;
+  border: 1px solid #39677b;
 }
 .btn-info:hover,
 .btn-info.disabled:hover,
@@ -1132,9 +1132,9 @@ pre {
 .btn-info.disabled:focus,
 .btn-info.focus,
 .btn-info.disabled.focus {
-  background: #03a9f3;
+  background: #39677b;
   opacity: 0.8;
-  border: 1px solid #03a9f3;
+  border: 1px solid #39677b;
 }
 .btn-warning,
 .btn-warning.disabled {
@@ -1490,12 +1490,9 @@ table.dataTable thead .sorting:after {
   font-size: 40px;
 }
 .white-box {
-  background: #E2E4E6;
-  margin: 0 8px;
-  padding: 8px 8px 8px 8px;
-  width: 297px;
+  background: #ffffff;
+  padding: 25px;
   margin-bottom: 15px;
-  border-radius: 5px;
 }
 .white-box .box-title {
   margin: 0px 0px 12px;
@@ -1630,9 +1627,9 @@ table.dataTable thead .sorting:after {
 }
 .panel-blue .panel-heading,
 .panel-info .panel-heading {
-  border-color: #03a9f3;
+  border-color: #39677b;
   color: white;
-  background-color: #03a9f3;
+  background-color: #39677b;
 }
 .panel-blue .panel-heading a,
 .panel-info .panel-heading a {
@@ -3664,7 +3661,7 @@ table.focus-on tbody tr.focused td {
 .form-material .form-control,
 .form-material .form-control.focus,
 .form-material .form-control:focus {
-  background-image: linear-gradient(#9675ce, #9675ce), linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
+  background-image: linear-gradient(#39677b, #39677b), linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
   border: 0 none;
   border-radius: 0;
   box-shadow: none;

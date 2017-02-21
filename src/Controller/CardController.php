@@ -42,7 +42,7 @@ class CardController extends Controller
         $card->list = $postData['idlist'];
         $card->cardname = ($postData['cardname']);
         $card->save();
-        return $response->withRedirect('/board/list/'.$postData['board']);
+        return $response->withRedirect('/public/board/list/'.$postData['board']);
 	}
 	
 	public function delete(Request $request, Response $response, Array $args)
