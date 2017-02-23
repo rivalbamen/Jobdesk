@@ -106,7 +106,7 @@
   }
   .scrollbarheight {
     /*width: 10000px;*/
-    /* overflow-y: auto; */
+    height: 530px
     position: relative;
     white-space: nowrap;
   }
@@ -450,16 +450,16 @@
                           </script>
                       <?php endforeach; ?>
                   </li>
-                  </div>
-                    <a class="btn btn-block btn-default m-t-10 show-<?= $list->id; ?>">Add a Card ...</a>
-                    <form action="<?= $this->pathFor('save-card'); ?>" method="POST">
-                      <div class="m-t-15 lihat-<?= $list->id; ?> dn" style="display: none;">
+                  <form action="<?= $this->pathFor('save-card'); ?>" method="POST">
+                      <div id="addcard" class="m-t-15 lihat-<?= $list->id; ?> dn" style="display: none;">
                           <input type="text" name="board" value="<?php echo @$boards->id ?>" class="hidden">
                           <input type="text" name="idlist" class="hidden" value="<?= $list->id; ?>">
                           <textarea class="form-control form-control-line" name="cardname" rows="3"></textarea>
                           <button type="submit" class="btn btn-info m-t-20">Add</button> 
                         </div>
                     </form>
+                  </div>
+                    <a href="#addcard" class="btn btn-block btn-default m-t-10 show-<?= $list->id; ?>">Add a Card ...</a>
                 </ol>
               </div>
             </div> 
