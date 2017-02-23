@@ -1550,6 +1550,12 @@ table.dataTable thead .sorting:after {
   margin-bottom: 15px;
   border-radius: 5px;
 }
+.white-box1 {
+  background: #ffffff;
+  /*margin: 0 8px;*/
+  padding: 25;
+  margin-bottom: 15px;
+}
 .scrollbar {
   width: 267px;
   max-height: 390px;
