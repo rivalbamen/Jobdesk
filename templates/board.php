@@ -120,7 +120,7 @@
             <div class="col-md-3">
               <?php foreach($boards as $board): ?>
               <a href="list/<?= $board->id; ?>">
-                <li class="board-list background background text-white white-box ">
+                <li class="board-list background background text-white white-box1">
                   <span><?= $board->boardname; ?></span>
                 </li>
               </a>
