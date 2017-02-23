@@ -106,7 +106,8 @@
   }
   .scrollbarheight {
     /*width: 10000px;*/
-    height: 530px;
+    min-height: 400px;
+    max-height: 530px;
     position: relative;
     white-space: nowrap;
   }
