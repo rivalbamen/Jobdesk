@@ -39,17 +39,16 @@ class BoardController extends Controller
 		$postData = $request->getParsedBody();
 
 		 // insert
-        if ($postData['id'] == '') {
+        if ($postData['pk'] == '') {
 
         	$this->session->setFlash('success', 'Board Berhasil Dibuat');
             $board = new Board();
-        // } else {
+       		$board->boardname = ($postData['boardname']);
+        } else {
         // update
-        	// $this->session->setFlash('success', 'Board Berhasil Diperbaharui');
-         //    $board = board::find($postData['id']);
+        	$board = Board::find($postData['pk']);
+	        $board->boardname = ($postData['value']);
         }
-
-        $board->boardname = ($postData['boardname']);
 
         $board->save();
 

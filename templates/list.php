@@ -41,8 +41,6 @@
 <!-- color CSS -->
 <link href="<?=$this->baseUrl()?>css/colors/blue.css" id="theme"  rel="stylesheet">
 
-
-
 <!-- jQuery -->
 <script src="<?=$this->baseUrl()?>plugins/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -73,12 +71,93 @@
    }
    .myadmin-dd .dd-list .dd-item .dd-handle {
       text-overflow: ellipsis;
-      white-space: nowrap;
       overflow: hidden;
+      white-space: normal;
+      width: 100%;
+      margin-bottom: 5px;
+      cursor: pointer;
   }
   .nameBoard {
       color: #39677b;
       font-size: 25px;
+      border-bottom: 0 !important;
+  }
+  .liststyle {
+      border-bottom: 0 !important;
+      font-size: 16px;
+      font-weight: 400;
+  }
+  .panel-action {
+      margin-top: 10px;
+  }
+  .myadmin-dd .dd-list .dd-item button.text-left {
+    height: auto;
+    font-size: 16px;
+    margin: 0;
+    color: #fff;
+    width: 80px;
+  }
+  .myadmin-dd .dd-list .dd-item .editable-buttons button {
+    height: auto;
+    font-size: 14px;
+    margin: 0 5px;
+    width: auto;
+    color: #fff;
+  }
+  .scrollbarheight {
+    /*width: 10000px;*/
+    /* overflow-y: auto; */
+    position: relative;
+    white-space: nowrap;
+  }
+  .col-md-3-dsa {
+    width: 283px;
+    margin-left: 20px;
+    position: relative;
+    display: inline-flex;
+  }
+  .white-box {
+    white-space: normal;
+  }
+  .myadmin-dd .dd-list .dd-item .col-xs-3 button {
+    font-family: 'Poppins', sans-serif;
+    margin: 0 0 10px;
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+    color: #fff;
+    text-align: left;
+    font-size: 15px;
+  }
+  button#update {
+    margin: 15px 0;
+    width: auto;
+    font-size: 16px;
+    color: #fff;
+  }
+  .button_default, .button_default.disabled {
+    background: #39677b !important;
+    border: 1px solid #849db5;
+  }
+  .button_default:hover {
+    background : #39677b !important;
+    opacity: 0.7;
+  }
+  .modal-body .editable-input {
+    width: 100%;
+  }
+  .editable-input textarea.form-control {
+    height: auto;
+    width: 100%;
+  }
+  .editableform .control-group {
+    width: 100%;
+  }
+  .editable-container.editable-inline {
+    width: 100%;
+  }
+  .editable-click, a.editable-click, a.editable-click:hover {
+    border-bottom: 0;
+    cursor: pointer;
   }
 </style>
 </head>
@@ -110,7 +189,7 @@
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
             
-        <li><a href="<?=$this->pathFor('tampil-board')?>" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+        <li><a href="<?=$this->pathFor('tampil-board')?>" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Job Desc <span class="fa arrow"></span></span></a>
                 </li>
         </ul>
     </div>
@@ -119,46 +198,259 @@
 
   <!-- Page Content -->
     <div id="page-wrapper" style="min-height: 601px;">
-    <!-- content -->
+    <!-- Header -->
+    <div id="header" style="margin-left: 5px;">
+            <div class="">
+              <div class="btn-group m-r-10">
+                <button aria-expanded="false" data-toggle="dropdown" class="btn btn-infoheader dropdown-toggle waves-effect waves-light" type="button"><img src="<?=$this->baseUrl()?>plugins/images/trellohp.png">Board </button>
 
-    <div class="container-fluid">
-      <div class="row bg-title">
-        <div class="col-sm-2 col-xs-9">
-          <a href="#" id="inline-filename" data-type="text" data-pk="1" data-title="Enter filename" class="editable editable-click nameBoard" style="display: inline;"><span><?php echo @$boards->boardname; ?></span></a>
+                    <ul class="nav navbar-top-links navbar-left hidden-xs">
+                      <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
+                      <li>
+                        <form role="search" class="app-search hidden-xs">
+                          <input type="text" placeholder="Search..." class="form-control">
+                          <a href=""><i class="fa fa-search"></i></a>
+                        </form>
+                      </li>
+                    </ul>
+
+                <ul role="menu" class="dropdown-menu">
+                <li><i class="fa fa-clock-o" aria-hidden="true"></i> Recent Boards</li>
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                <li><img src="<?=$this->baseUrl()?>plugins/images/trellohp.png">Personal Boards</li>
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                  <li><a href="#">Create new boards</a></li>
+                  <li><a href="#">Always Keep this menu open</a></li>
+                  <li><a href="#">See closed boards</a></li>
+                </ul>
+
+                <div class="right">
+                <div class="btn-group m-r-10">
+                <div class="dropdown"  style="z-index: 99;">
+                <button aria-expanded="false" data-toggle="dropdown" class="btn btn-infoheader dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-bell-o" aria-hidden="true"></i></button>
+                <ul role="menu" class="dropdown-menu animated flipInX">
+                  <a href="#"></a>
+                  <li><a href="#"><center>Notification</center></a></li>
+                  <li class="divider"></li> 
+                </ul>
+                </div>
+                </div>
+
+                <div class="btn-group m-r-10">
+                <div class="dropdown" style="z-index: 99;">
+                <button aria-expanded="false" data-toggle="dropdown" class="btn btn-infoheader dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                <ul role="menu" class="dropdown-menu animated flipInX">
+                  <a href="#"></a>
+                  <li><a href="#"><center>Information</center></a></li>
+                  <li class="divider"></li> 
+                </ul>
+                </div>
+                </div>
+
+                <div class="btn-group m-r-10">
+                <div class="dropdown" style="z-index: 99;">
+                <button aria-expanded="false" data-toggle="dropdown" class="btn btn-infoheader dropdown-toggle waves-effect waves-light" type="button">Admin</button>
+                <ul role="menu" class="dropdown-menu animated flipInX">
+                  <a href="#"></a>
+                  <li><a href="#"><center>Admin</center></a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Profil</a></li>
+                  <li><a href="#">Cards</a></li>
+                  <li><a href="#">Settings</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Help</a></li>
+                  <li><a href="#">Shortcuts</a></li>
+                  <li><a href="#">Change Language...</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Log Out</a></li>
+                </ul>
+                </div>
+                </div>
+
+                <div class="btn-group m-r-10">
+                <div class="dropdown" style="z-index: 99;">
+                <button aria-expanded="false" data-toggle="dropdown" class="btn btn-infoheader dropdown-toggle waves-effect waves-light" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                 <ul role="menu" class="dropdown-menu animated flipInX">
+                  <a href="#"></a>
+                  <li><a href="#"><center>Create</center></a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Create Bords...<p style="font-size: 11px; color: #000;">Lorem Ipsum Lorem Ipsum Lorem Ipsum</p></a></li>             
+                  <li><a href="#">Create Personal Team...<p style="font-size: 11px; color: #000;">Lorem Ipsum Lorem Ipsum Lorem Ipsum</p></a></li> 
+                  <li><a href="#">Create Business Team...<p style="font-size: 11px; color: #000;">Lorem Ipsum Lorem Ipsum Lorem Ipsum</p></a></li> 
+                </ul>
+                </div>
+                </div>
+              </div>
+              </div>
+              </div>
+              </div>
+    <!-- content -->
+     <div class="row bg-title" style="margin-left: 5px;">
+        <div class="col-sm-6 col-xs-9">
+          <a href="#" id="inline-filename" data-type="text" data-pk="<?= @$boards->id; ?>" data-title="Enter filename" class="editable editable-click nameBoard" style="display: inline;"><span><?= @$boards->boardname; ?></span></a>
+          <script type="text/javascript">
+          $(function(){
+            //inline
+               $('#inline-filename').editable({
+               url: '<?= $this->pathFor('save-board'); ?>',
+               type: 'text',
+               pk: <?= @$boards->id; ?>,
+               name: 'boardname',
+               title: 'Enter boardname',
+               mode: 'inline'
+             });
+
+            });
+          </script>
         </div>
-<!--         <div class="col-lg-10 col-md-8 col-xs-12">
-          <ol class="breadcrumb">
-            <li><a href="#">Show Menu</a></li>
-          </ol>
-        </div> -->
       </div>
+    <script type="text/javascript">
+      window.onload=function(){
+      document.getElementById("#scroll-auto-width").offsetWidth;
+    }
+    </script>
+    <div id="style-1" class="container-fluid" style="flex-grow: 1;overflow-y: auto;position: relative;white-space: nowrap;padding: 0 0;margin: 0 25px;margin-bottom: 25px;">
+    <div id="scroll-auto-width" class="scrollbarheight" id="style-1">
       <!-- isi content -->
-      <?php foreach($lists as $list): ?>
-        <div class="col-md-3">
-            <div class="white-box">
-              <a href="#" id="inline-namecard-<?= $list->id; ?>" data-type="text" data-pk="1" data-title="Enter namecard" class="editable editable-click" style="display: inline;"><?= $list->listname; ?></a>
+        <?php foreach($lists as $list): ?>
+        <div class="col-md-3-dsa">
+          <div class="white-box">
+      
+              <a href="#" id="inline-namecard-<?= $list->id; ?>" data-type="text" data-pk="<?= $list->id?>" data-title="Enter namecard" class="editable editable-click liststyle" style="display: inline;"><?= $list->listname;?></a>
               <script type="text/javascript">
               $(function(){
-
                    $('#inline-namecard-<?= $list->id; ?>').editable({
+                   url: '<?= $this->pathFor('save-list');?>',
                    type: 'text',
-                   pk: 1,
-                   name: 'namecard',
-                   title: 'Enter namecard',
+                   pk: <?= $list->id?>,
+                   name: 'namelist',
+                   title: 'Enter namelist',
                    mode: 'inline'
                  });
 
                 });
               </script>
-               <div class="panel-action"><a href="#" data-perform="panel-collapse">
+     
+              
+              <div class="panel-action">
               <div class="myadmin-dd dd" id="nestable">
                 <ol id="card-list" class="dd-list">
+                <div class="scrollbar" id="style-1">
                   <li class="dd-item " data-id="1">
                       <?php foreach ($list->details as $card):
                         ?>
-                          <div class="dd-handle btn-block btn-default"><?= $card->cardname;?></div>
+                          <div class="dd-handle btn-block btn-default" data-toggle="modal" data-target=".bs-example-modal-lg-<?= $card->id; ?>"><?= $card->cardname;?></div>
+                          <div class="modal fade bs-example-modal-lg-<?= $card->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                          <!-- modal dialog -->
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin: 0;">×</button>
+                                  <h4 class="modal-title" id="myLargeModalLabel"><i class="ti-clipboard"></i> <?= $card->cardname;?></h4>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="row">
+                                    <div class="col-lg-12">
+                                      <div class="col-xs-9">
+                                        <div class="form-group">
+                                          <h4>Description</h4>
+                                          <label id="card-<?= $card->id;?>" data-type="textarea" data-pk="<?= $card->id;?>" data-placeholder="Your comments here..." data-title="Enter comments" class="control-label"><?= $card->description; ?></label>
+                                          <!-- akhir tampilan form edit -->
+                                        </div>
+                                        <div class="mdl-card__supporting-text">
+                                        <form id="comments<?= $card->id;?>">
+                                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-upgraded" data-upgraded=",MaterialTextfield">
+                                            <label class="control-label" for="textarea"><i class="ti-comments"></i> Add Comment</label>
+                                            <br>
+                                            <input type="text" name="idcard" value="<?= $card->id;?>" class="hide">
+                                            <input type="text" name="iduser" value="<?= $_SESSION['id']; ?>" class="hide">
+                                            <textarea name="comment" type="submit" class="form-control status-box mdl-textfield__input" id="textarea" rows="8" placeholder="Add your comment...."></textarea>
+                                            <!-- <label class="mdl-textfield__label" for="sample3">Say something...please </label> -->
+                                          </div>
+
+                                          <button id="update" class="btn btn-block btn-success"> Comment</button>
+                                        </form>
+                                        <script type="text/javascript">
+                                         $('form#comments<?= $card->id;?>').submit(function( event ) {
+                                            event.preventDefault();
+                                            $.ajax({
+                                                url: '<?= $this->pathFor('comment-save');?>',
+                                                type: 'post',
+                                                data: $('form#comments<?= $card->id;?>').serialize(), // Remember that you need to have your csrf token included
+                                                dataType: 'json',
+                                                success: function( _response ){
+                                                    // Handle your response..
+                                                },
+                                                error: function( _response ){
+                                                    // Handle error
+                                                }
+                                            });
+                                            $('textarea.status-box.mdl-textfield__input').val('');
+                                         });
+                                        </script>
+                                      </div>
+                                      </div> 
+                                      <div class="col-xs-3">
+                                        <h3>Add</h3>
+                                          <div class="dropdown open">
+                                          <button type="button" class="dropdown-toggle btn waves-effect btn-style btn-rounded button_default text-left" data-toggle="dropdown" aria-expanded="true"><li class="ti-check-box"> Checklist</li></button>
+                                          <div class="dropdown-menu animated flipInY" "="">
+                                          <div class="panel-body">
+                                          <div class="header">
+                                              Add Checklist
+                                          </div>
+                                          <div class="form m-t-5">
+                                            <form action="" method="POST">
+                                              <div class="form-body">
+                                                  <div class="row">
+                                                      <div class="form-group">
+                                                        <label class="control-label">Title</label>
+                                                        <input type="text" id="firstName" class="form-control" placeholder="add your list . . ." name="listname">
+                                                      </div>
+                                                  </div>
+                                            </div>
+                                              <div class="form-actions">
+                                                  <button type="button" class="btn waves-effect btn-style btn-rounded button_default text-left" style="text-align: center; width: 100px; float: left;">Add</button>
+                                              </div>
+                                          </form>
+                                          </div>
+                                          </div>
+                                          </div>
+                                          </div>
+                                          <button type="button" class="btn waves-effect btn-style btn-rounded button_default text-left collapseble"><li class="ti-calendar"> Due date</li> </button>
+                                          <button type="button" class="btn waves-effect btn-style btn-rounded button_default text-left collapseble"><li class="ti-link"> Attachment</li></button>
+                                      </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                              </div>
+                            </div>
+                            <!-- modal dialog end -->
+                          </div>
+                          <!-- tampil dialog comment end -->
+                          <script type="text/javascript">
+                          $(function(){
+                               $('#card-<?= $card->id;?>').editable({
+                               url: '<?= $this->pathFor('save-card');?>',
+                               pk: <?= $card->id?>,
+                               name: 'carddesc',
+                               title: 'Enter card description',
+                               showbuttons: 'bottom',
+                               mode: 'inline',
+                               row: 5,
+                               cols: 10
+                             });
+
+                            });
+                          </script>
                       <?php endforeach; ?>
                   </li>
+                  </div>
                     <a class="btn btn-block btn-default m-t-10 show-<?= $list->id; ?>">Add a Card ...</a>
                     <form action="<?= $this->pathFor('save-card'); ?>" method="POST">
                       <div class="m-t-15 lihat-<?= $list->id; ?> dn" style="display: none;">
@@ -170,9 +462,9 @@
                     </form>
                 </ol>
               </div>
-              </div>
-            </div>
+            </div> 
           </div>
+        </div>
           <script>
             $(document).ready(function(){
                 $("a.show-<?= $list->id; ?>").click(function(){
@@ -181,7 +473,7 @@
             });
           </script>
         <?php endforeach; ?>
-        <div class="col-sm-3 col-xs-12">
+        <div class="col-md-3-dsa">
             <button type="button" class="btn btn-block btn-rounded btn-default showtop" data-target="#add-list" data-toggle="modal">Add a List ...</button>
             <!-- Start an Alert -->
         </div>
@@ -194,7 +486,7 @@
                     <div class="modal-body">
                         <form action="<?= $this->pathFor('save-list'); ?>" method="POST">
                             <div class="form-group">
-                                <div class="col-md-12 m-b-20">
+                                <div class="col-md-10 m-b-20">
                                     <input type="text" name="idboard" value="<?php echo @$boards->id ?>" class="hidden">
                                     <input type="text" name="listname" class="form-control" placeholder="Add a List . . . "> 
                                 </div>
@@ -204,7 +496,9 @@
                     </div>
                 </div>
                 </div>
+                </div>
                 <!-- /.modal-content -->
+                <div class="clear"></div>
             </div>
             <!-- /.modal-dialog -->
         </div>
@@ -271,27 +565,6 @@
 
 <!-- Rename File -->
 <script type="text/javascript" src="<?=$this->baseUrl()?>plugins/bower_components/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-<script type="text/javascript">
-$(function(){
-  //inline
-     $('#inline-filename').editable({
-     type: 'text',
-     pk: 1,
-     name: 'filename',
-     title: 'Enter filename',
-     mode: 'inline'
-   });
-
-     $('#inline-namecard').editable({
-     type: 'text',
-     pk: 1,
-     name: 'namecard',
-     title: 'Enter namecard',
-     mode: 'inline'
-   });
-
-  });
-</script>
 
 <script type="text/javascript">
 var isconfirming = false;
@@ -336,5 +609,12 @@ var isconfirming = false;
 <script src="<?=$this->baseUrl()?>js/app/reservation.js"></script>
 <script src="<?=$this->baseUrl()?>js/app/logistic-purchase-request.js"></script>
 
+<script src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+
+  <script src="<?=$this->baseUrl()?>cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="<?=$this->baseUrl()?>cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+<script src="<?=$this->baseUrl()?>//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="<?=$this->baseUrl()?>https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+<script src="<?=$this->baseUrl()?>https://code.getmdl.io/1.1.2/material.min.js"></script>
 </body>
 </html>

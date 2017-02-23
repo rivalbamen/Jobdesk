@@ -71,8 +71,14 @@
 </div>
   <div class="login-box">
     <div class="white-box">
+      <h3 class="title-in m-b-20">Sign In</h3>
+      <!-- 
+      <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      </div>
+       -->
       <form class="form-horizontal form-material" id="loginform" action="<?= $this->pathFor('check-user'); ?>" method="post">
-        <h3 class="title-in m-b-20">Sign In</h3>
         <div class="form-group ">
           <div class="col-xs-12">
             <input class="form-control" name="username" type="text" required="" placeholder="Username">
