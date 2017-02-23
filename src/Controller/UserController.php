@@ -103,10 +103,10 @@ class UserController extends Controller
 				$_SESSION['role'] = 'User';
 			}	
 
-			return $response->withRedirect($this->router->pathFor('tampil-user'));
+			return $response->withRedirect($this->router->pathFor('tampil-board'));
 
 		} else {
-
+			$this->session->setFlash('gagal', 'username atau password salah');
 			return $response->withRedirect($this->router->pathFor('login'));
 
 		}

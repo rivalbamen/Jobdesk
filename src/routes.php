@@ -16,14 +16,17 @@ $app->group('/migrate', function() {
 	$userMigration = new App\Migration\UserMigration();
 	$userMigration->createTable();
 
-	$BoardMigration = new App\Migration\BoardMigration();
-	$BoardMigration->createTable();
+	$boardMigration = new App\Migration\BoardMigration();
+	$boardMigration->createTable();
 
-	$ListMigration = new App\Migration\ListMigration();
-	$ListMigration->createTable();
+	$listMigration = new App\Migration\ListMigration();
+	$listMigration->createTable();
 
-	$CardMigration = new App\Migration\CardMigration();
-	$CardMigration->createTable();
+	$cardMigration = new App\Migration\CardMigration();
+	$cardMigration->createTable();
+
+	$commentMigration = new App\Migration\CommentMigration();
+	$commentMigration->createTable();
 
 	return $response;
 	});
@@ -41,6 +44,12 @@ $app->group('/user', function() {
 	$this->post('/save', App\Controller\UserController::class.':save')->setName('save-user');
 	$this->get('/delete/{id}', App\Controller\UserController::class.':delete')->setName('delete-user');
 	$this->get('/logout', App\Controller\UserController::class.':logout')->setName('user-logout');
+
+});
+
+$app->group('/comment', function() {
+	$this->post('/save', App\Controller\CommentController::class.':save')->setName('comment-save');
+	$this->get('/lihat/{id}', App\Controller\CommentController::class)->setName('comment-tampil');
 
 });
 
