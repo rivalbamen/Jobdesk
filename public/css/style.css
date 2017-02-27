@@ -618,6 +618,26 @@ hr {
   background: #e2e4e6;
   border-radius: 3px;
 }
+
+.dropdown-menuleft {
+  border: 1px solid rgba(120, 130, 140, 0.13);
+  border-radius: 5px;
+  -webkit-box-shadow: 0px!important;
+  -moz-box-shadow: 0px!important;
+  padding-bottom: 8px;
+  margin-top: 5px;
+  margin-left: 12px;
+  padding: 20px;
+}
+
+.dropdown-menuleft > li > a {
+  padding: 9px 20px;
+}
+.dropdown-menuleft > li > a:focus,
+.dropdown-menuleft > li > a:hover {
+  background: #e2e4e6;
+  border-radius: 3px;
+}
 .navbar-top-links .progress {
   margin-bottom: 6px;
 }
@@ -871,7 +891,6 @@ pre {
 #header {
   padding: 5px;
   margin:0px auto;
-  background: #e2e4e6;
 }
 .footer {
   bottom: 0;
@@ -887,7 +906,7 @@ pre {
 }
 .bg-title {
   overflow: hidden;
-  padding: 15px 25px 10px;
+  padding: 15px 10px 10px;
   margin-bottom: 10px;
   margin-left: -25.5px;
   margin-right: -25.5px;
@@ -923,6 +942,7 @@ pre {
 }
 .logo b {
   /*background:@themecolor;*/
+  padding: 5px;
   height: 60px;
   display: inline-block;
 }
@@ -1159,7 +1179,7 @@ pre {
 }
 .btn-infoheader,
 .btn-infoheader.disabledheader {
-  background: #CCC;
+  background: #c4c9cc;
   border-radius: 3px;
   color: white;
 }
@@ -1169,15 +1189,15 @@ pre {
 .btn-infoheader.disabledheader:focus,
 .btn-infoheader.focus,
 .btn-infoheader.disabledheader.focusheader {
-  background: #CCCCCC;
+  background: #e2e4e6;
   color: white;
 }
 
 .btn-infoleft,
 .btn-infoleft.disabledleft {
-  background: #CCC;
+  background: #c4c9cc;
   border-radius: 3px;
-  color: white;
+  color: #fff;
 }
 .btn-infoleft:hover,
 .btn-infoleft.disabledleft:hover,
@@ -1185,8 +1205,8 @@ pre {
 .btn-infoleft.disabledleft:focus,
 .btn-infoleftr.focus,
 .btn-infoleft.disabledleft.focusleft {
-  background: #CCCCCC;
-  color: white;
+  background: #e2e4e6;
+  color: #fff;
 }
 .btn-warning,
 .btn-warning.disabled {
@@ -1220,8 +1240,8 @@ pre {
 }
 .btn-default,
 .btn-default.disabled {
-  background: #e4e7ea;
-  border: 1px solid #e4e7ea;
+  background: #e2e4e6;
+  border: 1px solid #e2e4e6;
 }
 .btn-default:hover,
 .btn-default.disabled:hover,
@@ -1230,8 +1250,8 @@ pre {
 .btn-default.focus,
 .btn-default.disabled.focus {
   opacity: 0.8;
-  border: 1px solid #e4e7ea;
-  background: #e4e7ea;
+  border: 1px solid #e2e4e6;
+  background: #e2e4e6;
 }
 .btn-default.btn-outline {
   background-color: #ffffff;
@@ -1584,18 +1604,18 @@ table.dataTable thead .sorting:after {
   overflow-x: auto;
   overflow-y: auto;*/
 }
-#style-1::-webkit-scrollbarheight-track {
+#style-2::-webkit-scrollbarheight-track {
   /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
   border-radius: 10px;
   background-color: #D6DADC;
 }
 
-#style-1::-webkit-scrollbarheight {
+#style-2::-webkit-scrollbarheight {
   width: 10px;
-  background-color: #E2E4E6;
+  background-color: #edf1f5;
 }
 
-#style-1::-webkit-scrollbarheight-thumb {
+#style-2::-webkit-scrollbarheight-thumb {
   border-radius: 10px;
   /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
   background-color: #c4c9cc;
@@ -13530,6 +13550,5 @@ ul.list-icons li i {
   }
 }
 .right {
-  margin-left: 1085px;
-
+  float: right;
 }
