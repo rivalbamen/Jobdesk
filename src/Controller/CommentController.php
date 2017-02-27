@@ -8,7 +8,7 @@ class CommentController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
 	{
-		$data['comments'] = Comment::where('card_id', $args['id'])->get();
+		$data['comments'] = Comment::where('card_id', $args['id'])->orderBy('id', 'DESC')->get();
 		$data['title'] = "Comment List";
 		return $this->renderer->render($response, 'comment', $data);
 	}
