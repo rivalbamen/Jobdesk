@@ -70,9 +70,10 @@ $app->group('/board', function() {
 
 	$this->get('/card/{id}', App\Controller\ListController::class)->setName('card-board');
 	$this->post('/save-card', App\Controller\CardController::class.':save')->setName('save-card');
+	$this->get('/delete/card/{id}', App\Controller\CardController::class.':delete')->setName('hapus-card');
 
 	$this->post('/save-checklist', App\Controller\ChecklistController::class.':save')->setName('save-checklist');
-	$this->get('/checklist/lihat/{id}', App\Controller\ChecklistController::class)->setName('checklist->tampil');
+	$this->get('/checklist/lihat/{id}', App\Controller\ChecklistController::class)->setName('checklist-tampil');
 
 	$this->post('/save-child', App\Controller\ChildlistController::class.':save')->setName('save-child');
 	$this->get('/childlist/lihat/{id}', App\Controller\ChildlistController::class)->setName('child-tampil');

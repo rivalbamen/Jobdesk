@@ -211,7 +211,7 @@ h3 {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: normal;
-    width: 100%;
+    width: 100% !important;
     margin-bottom: 5px;
     cursor: pointer;
 }
@@ -319,4 +319,19 @@ button#update {
 }
 .clockpicker-popover {
   z-index: 999999 !important;
+}
+.btn-infoarchive {
+  background: #fff;
+  color: #fff;
+  border-radius: 5px;
+}
+.btn-infoarchive:hover,
+.btn-infoarchive.disabledarchive:hover,
+.btn-infoarchive:focus,
+.btn-infoarchive.disabledarchive:focus,
+.btn-infoarchiver.focus,
+.btn-infoarchive.disabledarchive.focusarchive {
+  background: #e2e4e6;
+  color: #333;
+  border-radius: 3px;
 }

@@ -700,7 +700,7 @@ label {
   margin-bottom: 25px;
 }
 .form-group {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 .select2-container-multi .select2-choices {
   border: 1px solid #e4e7ea;
@@ -1226,7 +1226,6 @@ pre {
   background: #e2e4e6;
   color: white;
 }
-
 .btn-infoleft,
 .btn-infoleft.disabledleft {
   background: #c4c9cc;
@@ -1239,7 +1238,22 @@ pre {
 .btn-infoleft.disabledleft:focus,
 .btn-infoleftr.focus,
 .btn-infoleft.disabledleft.focusleft {
-  background: #e2e4e6;
+  background: #1e90ff;
+  color: #fff;
+}
+.btn-add,
+.btn-add.disabledleft {
+  background: #00ced1;
+  border-radius: 3px;
+  color: #fff;
+}
+.btn-add:hover,
+.btn-add.disabledleft:hover,
+.btn-add:focus,
+.btn-add.disabledleft:focus,
+.btn-addr.focus,
+.btn-add.disabledleft.focusleft {
+  background: #5f9ea0;
   color: #fff;
 }
 .btn-warning,

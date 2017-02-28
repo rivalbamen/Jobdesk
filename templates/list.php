@@ -219,7 +219,8 @@
                   <li class="dd-item " data-id="1">
                       <?php foreach ($list->details as $card):
                         ?>
-                          <div class="dd-handle btn-block btn-default" data-toggle="modal" data-target=".bs-example-modal-lg-<?= $card->id; ?>"><?= $card->cardname;?></div>
+                          <div class="dd-handle btn-block btn-default" data-toggle="modal" data-target=".bs-example-modal-lg-<?= $card->id; ?>"><?= $card->cardname;?><a href="#">
+                          <i class="fa fa-pencil right btn btn-infoarchive" type="button"" aria-hidden="true"></i></a></div>
                           <div class="modal fade bs-example-modal-lg-<?= $card->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                           <!-- modal dialog -->
                             <div class="modal-dialog modal-lg">
@@ -249,7 +250,7 @@
                                             <!-- <label class="mdl-textfield__label" for="sample3">Say something...please </label> -->
                                           </div>
 
-                                          <button id="update" class="btn btn-block btn-success"> Comment</button>
+                                          <button id="update" class="btn btn-add btn-block btn-success"> Comment</button>
                                         </form>
                                         <div id="comment-show<?= $card->id;?>" class="comment-center"></div>
                                         <script type="text/javascript">
@@ -325,7 +326,7 @@
                                                   </div>
                                               </div>
                                               <div class="form-actions">
-                                                  <button type="submit" class="btn waves-effect btn-infoleft text-left" style="text-align: center; width: 100px; float: left;">Add</button>
+                                                  <button type="submit" class="btn waves-effect btn-add btn-infoleft text-left" style="max-width: 70px;">Add</button>
                                               </div>
                                             </form>
                                             <script type="text/javascript">
@@ -394,20 +395,20 @@
                                                     <div class="form-body">
                                                         <div class="row">
                                                             <div class="form-group">
-                                                              <div class="input-group clockpicker clockpicker-popover" data-autoclose="false">
+                                                              <div class="input-group clockpicker" data-placement="bottom" data-align="top" data-autoclose="true">
                                                                 <input type="text" name="caard" value="<?= $card->id; ?>" class="hidden"/>
                                                                 <input type="text" class="form-control" name="timenya">
                                                                 <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div>
                                                             </div>
                                                             <div class="form-group">
                                                               <div class="input-group">
-                                                                <input type="text" id="dateku" class="form-control mydatepicker" name="datenya" placeholder="mm/dd/yyyy">
+                                                                <input type="text" id="datepicker-autoclose" class="form-control mydatepicker" name="datenya" placeholder="mm/dd/yyyy">
                                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-actions">
-                                                        <button type="submit" class="btn waves-effect btn-infoleft text-left" style="text-align: center; width: 100px; float: left;">Add</button>
+                                                        <button type="submit" class="btn waves-effect btn-add btn-infoleft text-left" style="max-width: 70px;">Add</button>
                                                     </div>
                                                   </form>
                                                 </div>
@@ -436,11 +437,7 @@
                                            <!-- button Attachment -->
                                       <button type="button" class="dropdown-toggle btn waves-effect btn-infoleft" data-toggle="dropdown"><i class="fa fa-paperclip"></i> Attachment</button>
                                         <h3>Action</h3>
-                                        <!-- button Archive -->
-                                          <div class="dropdown open">
-                                          <button type="button" class="dropdown-toggle btn waves-effect btn-infoleft" data-toggle="dropdown"><i class="fa fa-trash-o"></i>  Archive</button>
-                                          </div>
-
+                                          <a class="btn waves-effect btn-infoleft" href="<?= $this->baseUrl();?>board/delete/card/<?= $card->id;?>"><i class="fa fa-trash-o"></i>  Archive</a>
                                       </div>
                                         </div>
                                         </div>
