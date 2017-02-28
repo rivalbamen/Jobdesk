@@ -4,6 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
 use App\Model\Card;
+
 class CardController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
@@ -52,7 +53,6 @@ class CardController extends Controller
 	{
 		$card = Card::find($args['id']);
 		$card->delete();
-		$this->session->setFlash('success', 'card Terhapus');
-		return $response->withRedirect($this->router->pathFor('tampil-card'));
+		return $response->withRedirect($this->router->pathFor('tampil-board'));
 	}
 }
