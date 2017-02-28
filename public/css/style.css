@@ -1147,6 +1147,40 @@ pre {
   opacity: 0.8;
   border: 1px solid #ab8ce4;
 }
+.btn-ok,
+.btn-ok.disabled {
+  background: #d3d3d3;
+  color: #fff;
+  border-radius: 2px;
+}
+.btn-ok:hover,
+.btn-ok.disabled:hover,
+.btn-ok:focus,
+.btn-ok.disabled:focus,
+.btn-ok.focus,
+.btn-ok.disabled.focus {
+  background: #1e90ff;
+  color: #fff;
+  opacity: 0.8;
+  border-radius: 2px;
+}
+.btn-no,
+.btn-no.disabled {
+  background: #d3d3d3;
+  color: #fff;
+  border-radius: 2px;
+}
+.btn-no:hover,
+.btn-no.disabled:hover,
+.btn-no:focus,
+.btn-no.disabled:focus,
+.btn-no.focus,
+.btn-no.disabled.focus {
+  background: #ff0000;
+  color: #fff;
+  opacity: 0.8;
+  border-radius: 2px;
+}
 .btn-success,
 .btn-success.disabled {
   background: #39677b;
