@@ -38,6 +38,7 @@ class CardController extends Controller
 	        $card->cardname = ($postData['cardname']);
 	        $card->save();
 	        return $response->withRedirect('/board/list/'.$postData['board']);
+	        
         } else {
         // update
         	$this->session->setFlash('success', 'Card Berhasil Diperbaharui');

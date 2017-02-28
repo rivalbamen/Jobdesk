@@ -31,6 +31,9 @@ $app->group('/migrate', function() {
 	$checklistMigration = new App\Migration\ChecklistMigration();
 	$checklistMigration->createTable();
 
+	$childlistMigration = new App\Migration\ChildlistMigration();
+	$childlistMigration->createTable();
+
 	return $response;
 	});
 });
@@ -70,6 +73,11 @@ $app->group('/board', function() {
 
 	$this->post('/save-checklist', App\Controller\ChecklistController::class.':save')->setName('save-checklist');
 	$this->get('/checklist/lihat/{id}', App\Controller\ChecklistController::class)->setName('checklist->tampil');
+
+	$this->post('/save-child', App\Controller\ChildlistController::class.':save')->setName('save-child');
+	$this->get('/childlist/lihat/{id}', App\Controller\ChildlistController::class)->setName('child-tampil');
+	$this->get('/childlist/delete/{id}', App\Controller\ChildlistController::class.':delete')->setName('child-delete');
+	$this->get('/childlist/save/{id}/{status}', App\Controller\ChildlistController::class.':saveactive')->setName('child-save');
 });
 
 

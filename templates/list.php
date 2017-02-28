@@ -10,6 +10,9 @@
 <title><?=$title?></title>
 <!-- Bootstrap Core CSS -->
 <link href="<?=$this->baseUrl()?>bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?=$this->baseUrl()?>css/list.css" rel="stylesheet">
+<!-- Page plugins css -->
+<link href="<?=$this->baseUrl()?>plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
 <!-- Data table -->
 <link href="<?=$this->baseUrl()?>plugins/bower_components/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 <!-- Date picker plugins css -->
@@ -44,149 +47,6 @@
 <!-- jQuery -->
 <script src="<?=$this->baseUrl()?>plugins/bower_components/jquery/dist/jquery.min.js"></script>
 
-<style type="text/css">
-    a {
-    color: #333;
-   }
-   a: hover {
-    color: #ccc;
-   }
-   ul.board {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-   }
-   ul.board li {
-      margin: 5px;
-      margin-top: 20px;
-      margin-top: 20px;
-      border-radius: 5px;
-      height: 120px;
-      font-size: 18px;
-      background: #fcfcfc;
-      padding: 10px;
-   }
-   ul.board li span {
-      color: #fff;
-   }
-   span.create-board {
-      color: #9d9d9d !important;
-   }
-   .background {
-      background: #39677b !important;
-   }
-   .myadmin-dd .dd-list .dd-item .dd-handle {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: normal;
-      width: 100%;
-      margin-bottom: 5px;
-      cursor: pointer;
-  }
-  .header {
-    border-bottom: 1px solid #e5e5e5;
-    text-align: center; 
-    font-size: 16px;
-    color: #2f4f4f;
-  }
-  .panel-body {
-    width: 300px;
-    height: 200px;
-  }
-  .form {
-    padding-right: 5px;
-    padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  .nameBoard {
-      color: #39677b;
-      font-size: 25px;
-      border-bottom: 0 !important;
-  }
-  .liststyle {
-      border-bottom: 0 !important;
-      font-size: 16px;
-      font-weight: 400;
-  }
-  .panel-action {
-      margin-top: 10px;
-  }
-  .myadmin-dd .dd-list .dd-item button.text-left {
-    height: auto;
-    font-size: 16px;
-    margin: 0;
-    color: #fff;
-    width: 80px;
-  }
-  .myadmin-dd .dd-list .dd-item .editable-buttons button {
-    height: auto;
-    font-size: 14px;
-    margin: 0 5px;
-    width: auto;
-    color: #fff;
-  }
-  .scrollbarheight {
-    /*width: 10000px;*/
-    min-height: 400px;
-    max-height: 530px;
-    position: relative;
-    white-space: nowrap;
-  }
-  .col-md-3-dsa {
-    width: 283px;
-    margin-right: 20px;
-    position: relative;
-    display: inline-flex;
-  }
-  .white-box {
-    white-space: normal;
-  }
-  .myadmin-dd .dd-list .dd-item .col-xs-3 button {
-    font-family: 'Poppins', sans-serif;
-    margin: 0 0 10px;
-    width: 100%;
-    padding: 10px 10px 10px 20px;
-    color: #fff;
-    text-align: left;
-    font-size: 15px;
-  }
-  button#update {
-    margin: 15px 0;
-    width: auto;
-    font-size: 16px;
-    color: #fff;
-  }
-  .button_default, .button_default.disabled {
-    background: #39677b !important;
-    border: 1px solid #849db5;
-  }
-  .button_default:hover {
-    background : #39677b !important;
-    opacity: 0.7;
-  }
-  .modal-body .editable-input {
-    width: 100%;
-  }
-  .editable-input textarea.form-control {
-    height: auto;
-    width: 100%;
-  }
-  .editableform .control-group {
-    width: 100%;
-  }
-  .editable-container.editable-inline {
-    width: 100%;
-  }
-  .editable-click, a.editable-click, a.editable-click:hover {
-    border-bottom: 0;
-    cursor: pointer;
-  }
-  .comment-center .mail-contnet .mail-desc {
-    max-height: 50px;
-    height: auto;
-  }
-</style>
 </head>
 <body>
 
@@ -196,14 +56,16 @@
 <div id="wrapper">
 <nav class="navbar navbar-default navbar-static-top m-b-0">
     <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-      <div class="top-left-part"><a class="logo" href="#"><b><img src="<?=$this->baseUrl()?>plugins/images/harmonipermana-logo.png" width="150" alt="home" /></b><span class="hidden-xs"></span></a></div>
+      <div class="top-left-part"><a class="logo" href="#"><b><img src="<?=$this->baseUrl()?>plugins/images/harmonipermana-logo.png" width="130" alt="home" /></b><span class="hidden-xs"></span></a></div>
       <ul class="nav navbar-top-links navbar-right pull-right">
         
-        <!-- /.dropdown-user -->
-        <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> </a>
+        <li class="dropdown"> 
+        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> 
+        <b class="hidden-xs"> Admin</b>
+        </a>
           <ul class="dropdown-menu dropdown-user animated flipInY">
             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-            <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+            <li><a href="<?= $this->pathFor('user-logout'); ?>"><i class="fa fa-power-off"></i> Logout</a></li>
           </ul>
           <!-- /.dropdown-user -->
         </li>
@@ -444,8 +306,9 @@
                                       <div class="col-xs-3">
                                         <h3>Add</h3>
                                           <div class="dropdown open">
-                                          <button type="button" class="dropdown-toggle btn waves-effect btn-style btn-rounded button_default text-left" data-toggle="dropdown" aria-expanded="true"><li class="ti-check-box"> Checklist</li></button>
-                                          <div class="dropdown-menu animated flipInY" "="">
+                                            <button type="button" class="dropdown-toggle btn waves-effect btn-infoleft" data-toggle="dropdown"><i class="fa fa-check-square-o"></i>  Checklist </button>
+
+                                          <div class="dropdown-menu animated flipInY">
                                           <div class="panel-body">
                                           <div class="header">
                                               Add Checklist
@@ -462,7 +325,7 @@
                                                   </div>
                                               </div>
                                               <div class="form-actions">
-                                                  <button type="submit" class="btn waves-effect btn-style btn-rounded button_default text-left" style="text-align: center; width: 100px; float: left;">Add</button>
+                                                  <button type="submit" class="btn waves-effect btn-infoleft text-left" style="text-align: center; width: 100px; float: left;">Add</button>
                                               </div>
                                             </form>
                                             <script type="text/javascript">
@@ -520,39 +383,64 @@
                                           </div>
                                            <!-- button dueDate -->
                                           <div class="dropdown open">
-                                            <button type="button" class="dropdown-toggle btn waves-effect btn-style btn-rounded button_default text-left" data-toggle="dropdown" aria-expanded="true"><li class="ti-calendar"> Due date</li></button>
+                                            <button type="button" class="dropdown-toggle btn waves-effect btn-infoleft" data-toggle="dropdown"><i class="fa fa-calendar"></i> Due date</button>
                                               <div class="dropdown-menu animated flipInY">
                                                 <div class="panel-body">
                                                 <div class="header">
                                                     Change Due Date
                                                 </div>
                                                 <div class="form m-t-5">
-                                                  <form action="" method="POST">
+                                                  <form id="dueate<?= $card->id; ?>" action="<?= $this->pathFor('save-card');?>" method="POST">
                                                     <div class="form-body">
                                                         <div class="row">
                                                             <div class="form-group">
-                                                              <div class="input-group clockpicker " data-placement="bottom" data-align="top" data-autoclose="true">
-                                                              <input type="text" class="form-control" value="13:14">
-                                                              <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> 
-                                                              </div>
+                                                              <div class="input-group clockpicker clockpicker-popover" data-autoclose="false">
+                                                                <input type="text" name="caard" value="<?= $card->id; ?>" class="hidden"/>
+                                                                <input type="text" class="form-control" name="timenya">
+                                                                <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div>
                                                             </div>
                                                             <div class="form-group">
                                                               <div class="input-group">
-                                                                <input type="text" class="form-control mydatepicker" placeholder="mm/dd/yyyy">
-                                                                <span class="input-group-addon"><i class="icon-calender"></i></span> </div>
+                                                                <input type="text" id="dateku" class="form-control mydatepicker" name="datenya" placeholder="mm/dd/yyyy">
+                                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-actions">
-                                                        <button type="button" class="btn waves-effect btn-style btn-rounded button_default text-left" style="text-align: center; width: 100px; float: left;">Add</button>
+                                                        <button type="submit" class="btn waves-effect btn-infoleft text-left" style="text-align: center; width: 100px; float: left;">Add</button>
                                                     </div>
                                                   </form>
                                                 </div>
                                               </div>
                                             </div>
                                           </div>
+                                            <script type="text/javascript">
+                                                $('form#dueate<?= $card->id;?>').submit(function( event ) {
+                                                  event.preventDefault();
+                                                  $.ajax({
+                                                      url: '<?= $this->pathFor('save-card');?>',
+                                                      type: 'post',
+                                                      data: $('form#dueate<?= $card->id;?>').serialize(), // Remember that you need to have your csrf token included
+                                                      dataType: 'json',
+                                                      success: function( _response ){
+                                                          // Handle your response..
+                                                      },
+                                                      error: function( _response ){
+                                                          // Handle error
+                                                      }
+                                                  });
+                                                  $('input#dateku').val('');
+                                               });
+                                            </script>
 
-                                          <button type="button" class="btn waves-effect btn-style btn-rounded button_default text-left collapseble"><li class="ti-link"> Attachment</li></button>
+                                           <!-- button Attachment -->
+                                      <button type="button" class="dropdown-toggle btn waves-effect btn-infoleft" data-toggle="dropdown"><i class="fa fa-paperclip"></i> Attachment</button>
+                                        <h3>Action</h3>
+                                        <!-- button Archive -->
+                                          <div class="dropdown open">
+                                          <button type="button" class="dropdown-toggle btn waves-effect btn-infoleft" data-toggle="dropdown"><i class="fa fa-trash-o"></i>  Archive</button>
+                                          </div>
+
                                       </div>
                                         </div>
                                         </div>
@@ -588,7 +476,7 @@
                         </div>
                     </form>
                   </div>
-                    <a href="#addcard" class="btn btn-block btn-default m-t-10 show-<?= $list->id; ?>">Add a Card ...</a>
+                    <a href="#addcard" class="btn btn-block btn-default m-t-10 show-<?= $list->id; ?>">Add a Job ...</a>
                 </ol>
               </div>
             </div> 
@@ -738,13 +626,10 @@ var isconfirming = false;
 <script src="<?=$this->baseUrl()?>js/app/reservation.js"></script>
 <script src="<?=$this->baseUrl()?>js/app/logistic-purchase-request.js"></script>
 
-<script src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
-
-  <script src="<?=$this->baseUrl()?>cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="<?=$this->baseUrl()?>cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-<script src="<?=$this->baseUrl()?>//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="<?=$this->baseUrl()?>https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-<script src="<?=$this->baseUrl()?>https://code.getmdl.io/1.1.2/material.min.js"></script>
+<!-- Clock Plugin JavaScript -->
+<script src="<?=$this->baseUrl()?>plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js"></script>
+<!-- Date Picker Plugin JavaScript -->
+<script src="<?=$this->baseUrl()?>plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script>
 // Clock pickers
 $('#single-input').clockpicker({
@@ -789,5 +674,8 @@ if (/mobile/i.test(navigator.userAgent)) {
       });
 
 </script>
+
+<!--Style Switcher -->
+<script src="<?=$this->baseUrl()?>plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
 </html>

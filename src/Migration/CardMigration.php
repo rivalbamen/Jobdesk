@@ -16,6 +16,7 @@ class CardMigration
 					$table->string('cardname', 100);
 					$table->text('description');
 					$table->text('attachment');
+					$table->time('duetime');
 					$table->date('duedate');
 					$table->timestamps();
 					$table->softDeletes();
