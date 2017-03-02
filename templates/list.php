@@ -140,10 +140,45 @@
                 <div class="btn-group m-r-10">
                 <div class="dropdown">
                 <button aria-expanded="false" data-toggle="dropdown" class="btn btn-infoleft" type="button">... <u>Show Menu</u></button>
-                <ul role="menu" class="dropdown-menu" style="margin-left: -180px; width: 310px; height: 565px;">
+                <ul role="menu" id="style-1" class="dropdown-menu" style="margin-left: -180px; width: 310px; min-height: 565px; max-height: 565px;overflow: auto;">
                   <a href="#"><center><b>Menu</b><button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin: 0;">×</button></center></a>
                   <li class="divider"></li>
                   <li><i class="fa fa-indent" aria-hidden="true"></i> Activity</li>
+                  <?php 
+                  function TanggalIndo($date){
+                    $BulanIndo = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
+                   
+                    $tahun = substr($date, 0, 4);
+                    $bulan = substr($date, 5, 2);
+                    $tgl   = substr($date, 8, 2);
+                   
+                    $result = $tgl . " " . $BulanIndo[(int)$bulan-1] . " ". $tahun;   
+                    return($result);
+                  }
+
+                  foreach ($acts as $act): ?>
+                  <div class="phenom mod-other-type">
+                    <?php foreach ($act->details as $user): ?>
+                      <div class="phenom-creator">
+                        <div class="member js-show-mem-menu">
+                          <span class="member-initials"><?php $initial = substr($user->username, 0, 1); echo $initial[0];?></span>
+                        </div>
+                      </div>
+                    <div class="phenom-desc">
+
+                      <span class="inline-member js-show-mem-menu">
+                        <span class="u-font-weight-bold"><?= $user->username; ?></span>
+                      </span> 
+                      <?= $act->ket; ?> 
+                      <?php foreach($act->cards as $cardnya):?>
+                        on card <b>"<?= $cardnya->cardname; ?>"</b>
+                      <?php endforeach; ?>
+                    </div>
+
+                    <?php endforeach; ?>
+                    <p class="phenom-meta quiet"><?php $date= explode(' ', $act->created_at); echo $date[1].', '.TanggalIndo($date[0]);?></p>
+                  </div>
+                  <?php endforeach; ?>
                 </ul>
                 </div>
                 </div>
@@ -167,6 +202,7 @@
     <!-- content -->
      <div class="row bg-title" style="margin-left: 5px;">
         <div class="col-sm-6 col-xs-9">
+          <?php $_SESSION['board'] = @$boards->id;?>
           <a href="#" id="inline-filename" data-type="text" data-pk="<?= @$boards->id; ?>" data-title="Enter filename" class="editable editable-click nameBoard" style="display: inline;"><span><?= @$boards->boardname; ?></span></a>
           <script type="text/javascript">
           $(function(){
@@ -244,6 +280,7 @@
                                           <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label is-upgraded" data-upgraded=",MaterialTextfield">
                                             <label class="control-label" for="textarea"><i class="ti-comments"></i> Add Comment</label>
                                             <br>
+                                            <input type="text" name="idboard" value="<?php echo @$boards->id ?>" class="hide">
                                             <input type="text" name="idcard" value="<?= $card->id;?>" class="hide">
                                             <input type="text" name="iduser" value="<?= $_SESSION['id']; ?>" class="hide">
                                             <textarea name="comment" type="submit" class="form-control status-box mdl-textfield__input" id="textarea" rows="8" placeholder="Add your comment...."></textarea>
@@ -252,6 +289,10 @@
 
                                           <button id="update" class="btn btn-add btn-block btn-success"> Comment</button>
                                         </form>
+                                        <div id="activitynya-<?= $card->id; ?>">
+                                          
+
+                                        </div>
                                         <div id="comment-show<?= $card->id;?>" class="comment-center"></div>
                                         <script type="text/javascript">
                                          $('form#comments<?= $card->id;?>').submit(function( event ) {
@@ -286,6 +327,19 @@
                                                     console.log("xhr=" + xhr + " b=" + b + " c=" + c);
                                                 }
                                             });
+
+                                            jQuery.ajax({
+                                                url:'/board/activities/lihat/<?= $card->id;?>',
+                                                async: false,
+                                                type: 'GET',
+                                                success: function( data ){
+                                                     $('#activitynya-<?= $card->id; ?>').html(data);
+                                                },
+                                                error: function (xhr, b, c) {
+                                                    console.log("xhr=" + xhr + " b=" + b + " c=" + c);
+                                                }
+                                            });
+
                                           });
                                          $.ajaxSetup({
                                               headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
@@ -301,6 +355,18 @@
                                                   console.log("xhr=" + xhr + " b=" + b + " c=" + c);
                                               }
                                           });
+
+                                          jQuery.ajax({
+                                                url:'/board/activities/lihat/<?= $card->id;?>',
+                                                async: false,
+                                                type: 'GET',
+                                                success: function( data ){
+                                                     $('#activitynya-<?= $card->id; ?>').html(data);
+                                                },
+                                                error: function (xhr, b, c) {
+                                                    console.log("xhr=" + xhr + " b=" + b + " c=" + c);
+                                                }
+                                            });
                                         </script>
                                       </div>
                                       </div> 
@@ -320,6 +386,8 @@
                                                   <div class="row">
                                                       <div class="form-group">
                                                         <label class="control-label">Title</label>
+                                                        <input type="text" name="boardid" value="<?= $list->board; ?>" class="hidden">
+                                                        <input type="text" name="userid" value="<?= $_SESSION['id']; ?>" class="hidden">
                                                         <input type="text" name="cardid" value="<?= $card->id; ?>" class="hidden">
                                                         <input type="text" id="checklistname" class="form-control" placeholder="add your checklist . . ." name="checklistname">
                                                       </div>
@@ -362,6 +430,19 @@
                                                         console.log("xhr=" + xhr + " b=" + b + " c=" + c);
                                                     }
                                                 });
+
+                                                jQuery.ajax({
+                                                    url:'/board/activities/lihat/<?= $card->id;?>',
+                                                    async: false,
+                                                    type: 'GET',
+                                                    success: function( data ){
+                                                         $('#activitynya-<?= $card->id; ?>').html(data);
+                                                    },
+                                                    error: function (xhr, b, c) {
+                                                        console.log("xhr=" + xhr + " b=" + b + " c=" + c);
+                                                    }
+                                                });
+
                                               });
                                              $.ajaxSetup({
                                                   headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
@@ -377,6 +458,17 @@
                                                       console.log("xhr=" + xhr + " b=" + b + " c=" + c);
                                                   }
                                               });
+                                              jQuery.ajax({
+                                                url:'/board/activities/lihat/<?= $card->id;?>',
+                                                async: false,
+                                                type: 'GET',
+                                                success: function( data ){
+                                                     $('#activitynya-<?= $card->id; ?>').html(data);
+                                                },
+                                                error: function (xhr, b, c) {
+                                                    console.log("xhr=" + xhr + " b=" + b + " c=" + c);
+                                                }
+                                            });
                                             </script>
                                           </div>
                                           </div>
@@ -437,7 +529,7 @@
                                            <!-- button Attachment -->
                                       <button type="button" class="dropdown-toggle btn waves-effect btn-infoleft" data-toggle="dropdown"><i class="fa fa-paperclip"></i> Attachment</button>
                                         <h3>Action</h3>
-                                          <a class="btn waves-effect btn-infoleft" href="<?= $this->baseUrl();?>board/delete/card/<?= $card->id;?>"><i class="fa fa-trash-o"></i>  Archive</a>
+                                          <a class="btn waves-effect btn-infoleft" href="<?= $this->baseUrl();?>board/delete/card/<?= $list->board; ?>/<?= $card->id;?>"><i class="fa fa-trash-o"></i>  Archive</a>
                                       </div>
                                         </div>
                                         </div>
@@ -466,6 +558,7 @@
                   </li>
                   <form action="<?= $this->pathFor('save-card'); ?>" method="POST">
                       <div id="addcard" class="m-t-15 lihat-<?= $list->id; ?> dn" style="display: none;">
+                          <input type="text" name="userid" value="<?= $_SESSION['id'];?>" class="hidden">
                           <input type="text" name="board" value="<?php echo @$boards->id ?>" class="hidden">
                           <input type="text" name="idlist" class="hidden" value="<?= $list->id; ?>">
                           <textarea class="form-control form-control-line" name="cardname" rows="3"></textarea>
@@ -502,6 +595,7 @@
                             <div class="form-group">
                                 <div class="col-md-10 m-b-20">
                                     <input type="text" name="idboard" value="<?php echo @$boards->id ?>" class="hidden">
+                                    <input type="text" name="iduser" value="<?= $_SESSION['id']; ?>" class="hidden">
                                     <input type="text" name="listname" class="form-control" placeholder="Add a List . . . "> 
                                 </div>
                             </div>

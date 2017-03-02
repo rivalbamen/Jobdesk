@@ -31,13 +31,13 @@
         });
     return false;
   	});
-
+	<?php foreach ($child->details as $checklist): ?>
 	$("#checkbox<?= $child->id; ?>").click(function(){
 		var id = $(this).data("id");
 		token = $(this).data("tokens");
 		$.ajax(
 		{
-		    url: "/board/childlist/save/<?= $child->id; ?>/<?= $status; ?>",
+		    url: "/board/childlist/save/<?= $checklist->card_id; ?>/<?= $child->id; ?>/<?= $child->childname; ?>/<?= $status; ?>",
 		    type: 'GET',
 		    data: {
 		        "id": <?= $child->id; ?>,
@@ -47,6 +47,19 @@
 		    }
 		});
 	});
-
+	<?php endforeach; ?>
+	$("label#checkbox<?= $child->id; ?>").bind('click', function(){
+		 jQuery.ajax({
+            url:'/board/childlist/lihat/<?= $child->checklist_id;?>',
+            async: false,
+            type: 'GET',
+            success: function( data ){
+                 $('ul#childshow<?= $child->checklist_id; ?>').html(data);
+            },
+            error: function (xhr, b, c) {
+                console.log("xhr=" + xhr + " b=" + b + " c=" + c);
+            }
+        });
+	});
 	</script>
 <?php endforeach; ?>

@@ -4,6 +4,8 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
 use App\Model\Comment;
+use App\Model\Activity;
+
 class CommentController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
@@ -22,19 +24,30 @@ class CommentController extends Controller
 		}
 		if(isset($args['id']))
 			$data['comment'] = Comment::find($args['id']);
-		$data['title'] = "Form Comment";
+			$data['title'] = "Form Comment";
 		return $this->renderer->render($response, 'comment-form', $data);
 	}
 
 	public function save(Request $request, Response $response, Array $args)
 	{
 		$postData = $request->getParsedBody();
-		$comment = new comment();
+
+        $activity = new Activity();
+        $activity->user_id = $postData['iduser'];
+        $activity->card_id = $postData['idcard'];
+        $activity->board_id = $postData['idboard'];
+        $activity->ket = 'comment "'.$postData['comment'].'"';
+        $activity->comment = 1;
+        $activity->save();
+
+
+		$comment = new Comment();
         $comment->id = $postData['id'];
         $comment->card_id = $postData['idcard'];
         $comment->user_id = $postData['iduser'];
         $comment->comment = $postData['comment'];
         $comment->save();
+
         return $response->withRedirect('/board');
 	}
 	
