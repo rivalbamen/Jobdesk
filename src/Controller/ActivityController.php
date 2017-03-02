@@ -16,4 +16,11 @@ class ActivityController extends Controller
 		return $this->renderer->render($response, 'activity', $data);
 	}
 
+	public function allview(Request $request, Response $response, Array $args)
+	{
+		$data['activities'] = Activity::where('board_id', $args['id'])->orderBy('id', 'DESC')->limit(10)->get();
+
+		return $this->renderer->render($response, 'listmember', $data);
+	}
+
 }
