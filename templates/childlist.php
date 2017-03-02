@@ -8,7 +8,7 @@
 			$checked = 'checked';
 		}
 	?>
-	<li><label id="checkbox<?= $child->id; ?>"><input type="checkbox" name="checkbox[]" value="<?= $child->id; ?>" <?= $checked; ?>><i></i><span><?= $child->childname; ?></span><a id="blabla<?= $child->id; ?>" class="fa fa-trash-o"></a></label></li>
+	<li><label id="checkbox<?= $child->id; ?>" class="centang"><input type="checkbox" name="checkbox[]" value="<?= $child->id; ?>" <?= $checked; ?>><i></i><span><?= $child->childname; ?></span><a id="blabla<?= $child->id; ?>" class="fa fa-trash-o"></a></label></li>
 	<script type="text/javascript">
 	$("#blabla<?= $child->id; ?>").click(function(){
 		var id = $(this).data("id");
@@ -46,9 +46,20 @@
 		        "_token": token,
 		    }
 		});
+		jQuery.ajax({
+            url:'/board/activities/lihat/<?= $checklist->card_id;?>',
+            async: false,
+            type: 'GET',
+            success: function( data ){
+                 $('#activitynya-<?= $checklist->card_id; ?>').html(data);
+            },
+            error: function (xhr, b, c) {
+                console.log("xhr=" + xhr + " b=" + b + " c=" + c);
+            }
+        });
 	});
 	<?php endforeach; ?>
-	$("label#checkbox<?= $child->id; ?>").bind('click', function(){
+	$(document).on('click', 'label#checkbox<?= $child->id; ?>', function(){
 		 jQuery.ajax({
             url:'/board/childlist/lihat/<?= $child->checklist_id;?>',
             async: false,

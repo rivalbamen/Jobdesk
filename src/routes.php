@@ -85,6 +85,7 @@ $app->group('/board', function() {
 
 
 	$this->get('/activities/lihat/{id}', App\Controller\ActivityController::class)->setName('activity-tampil');
+	$this->get('/activities/all/{id}', App\Controller\ActivityController::class.':allview')->setName('all-activity');
 });
 
 
