@@ -34,6 +34,9 @@ $app->group('/migrate', function() {
 	$childlistMigration = new App\Migration\ChildlistMigration();
 	$childlistMigration->createTable();
 
+	$activityMigration = new App\Migration\ActivityMigration();
+	$activityMigration->createTable();
+
 	return $response;
 	});
 });
@@ -70,7 +73,7 @@ $app->group('/board', function() {
 
 	$this->get('/card/{id}', App\Controller\ListController::class)->setName('card-board');
 	$this->post('/save-card', App\Controller\CardController::class.':save')->setName('save-card');
-	$this->get('/delete/card/{id}', App\Controller\CardController::class.':delete')->setName('hapus-card');
+	$this->get('/delete/card/{board}/{id}', App\Controller\CardController::class.':delete')->setName('hapus-card');
 
 	$this->post('/save-checklist', App\Controller\ChecklistController::class.':save')->setName('save-checklist');
 	$this->get('/checklist/lihat/{id}', App\Controller\ChecklistController::class)->setName('checklist-tampil');
@@ -78,7 +81,10 @@ $app->group('/board', function() {
 	$this->post('/save-child', App\Controller\ChildlistController::class.':save')->setName('save-child');
 	$this->get('/childlist/lihat/{id}', App\Controller\ChildlistController::class)->setName('child-tampil');
 	$this->get('/childlist/delete/{id}', App\Controller\ChildlistController::class.':delete')->setName('child-delete');
-	$this->get('/childlist/save/{id}/{status}', App\Controller\ChildlistController::class.':saveactive')->setName('child-save');
+	$this->get('/childlist/save/{card}/{id}/{nama}/{status}', App\Controller\ChildlistController::class.':saveactive')->setName('child-save');
+
+
+	$this->get('/activities/lihat/{id}', App\Controller\ActivityController::class)->setName('activity-tampil');
 });
 
 

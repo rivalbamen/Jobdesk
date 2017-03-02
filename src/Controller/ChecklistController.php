@@ -6,6 +6,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
 use App\Model\Checklist;
+use App\Model\Activity;
 
 class ChecklistController extends Controller
 {
@@ -23,6 +24,14 @@ class ChecklistController extends Controller
 		 // insert
 		if ($postData['pk'] == '') {
 	    	$this->session->setFlash('success', 'Checklist Berhasil Dibuat');
+
+			$activity = new Activity();
+			$activity->user_id = $postData['userid'];
+	        $activity->card_id = $postData['cardid'];
+	        $activity->board_id = $postData['boardid'];
+	        $activity->ket = 'add checklist "'.$postData['checklistname'].'"';
+	        $activity->save();
+
 	        $checklist = new Checklist();
 	   		$checklist->checklistname = $postData['checklistname'];
 	   		$checklist->card_id = $postData['cardid'];

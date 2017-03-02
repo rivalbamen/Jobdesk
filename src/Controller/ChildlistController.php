@@ -6,6 +6,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
 use App\Model\Childlist;
+use App\Model\Activity;
 
 class ChildlistController extends Controller
 {
@@ -36,6 +37,19 @@ class ChildlistController extends Controller
 
 	public function saveactive(Request $request, Response $response, Array $args)
 	{
+		$ces = $args['status'];
+		if($ces == 1){
+			$ces = 'completed';
+		} else {
+			$ces = 'discompleted';
+		}
+		$activity = new Activity();
+		$activity->user_id = $_SESSION['id'];
+		$activity->board_id = $_SESSION['board'];
+		$activity->card_id = $args['card'];
+		$activity->ket = $ces.' checklist "'.$args['nama'].'"';
+		$activity->save();
+
 		$child = Childlist::find($args['id']);
 		$child->status = $args['status'];
 		$child->save();

@@ -6,6 +6,7 @@ use App\Controller\Controller;
 use App\Model\Lists;
 use App\Model\Board;
 use App\Model\Card;
+use App\Model\Activity;
 
 class ListController extends Controller
 {
@@ -15,7 +16,8 @@ class ListController extends Controller
 		$data['boardlist'] = Board::all();
 		$data['boardrecent'] = Board::orderBy('id', 'DESC')->get();
 		$data['title'] = "List Manager - Task Manager";
-		
+		$data['acts'] = Activity::where('board_id', $args['id'])->orderBy('id','DESC')->limit(15)->get();
+
 		if(isset($args['id'])){
 			$data['boards'] = Board::find($args['id']);
 		}
@@ -48,6 +50,12 @@ class ListController extends Controller
             $list = new Lists();
 	        $list->board = $postData['idboard'];
 	        $list->listname = ($postData['listname']);
+
+	        $activity = new Activity();
+	        $activity->board_id = $postData['idboard'];
+	        $activity->user_id = $postData['iduser'];
+	        $activity->ket = 'created list "'.$postData['listname'].'" on this board';
+	        $activity->save();
         } else {
         // update
         	$this->session->setFlash('success', 'List Berhasil Diperbaharui');

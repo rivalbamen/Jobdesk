@@ -4,6 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
 use App\Model\Card;
+use App\Model\Activity;
 
 class CardController extends Controller
 {
@@ -33,6 +34,13 @@ class CardController extends Controller
 		 // insert
         if ($postData['pk'] == '') {
         	$this->session->setFlash('success', 'Card Berhasil Dibuat');
+
+        	$activity = new Activity();
+        	$activity->user_id = $postData['userid'];
+        	$activity->board_id = $postData['board'];
+        	$activity->ket = 'created card "'.$postData['cardname'].'"';
+        	$activity->save();
+
             $card = new card();
 	        $card->id = $postData['id'];
 	        $card->list = $postData['idlist'];
@@ -51,6 +59,13 @@ class CardController extends Controller
 	
 	public function delete(Request $request, Response $response, Array $args)
 	{
+		$activity = new Activity();
+    	$activity->user_id = $_SESSION['id'];
+    	$activity->board_id = $args['board'];
+    	$activity->card_id = $args['id'];
+    	$activity->ket = 'archived some card';
+    	$activity->save();
+
 		$card = Card::find($args['id']);
 		$card->delete();
 		return $response->withRedirect($this->router->pathFor('tampil-board'));

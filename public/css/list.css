@@ -335,3 +335,77 @@ button#update {
   color: #333;
   border-radius: 3px;
 }
+
+
+/* ACTIVITIES
+================================================== */
+.mdl-textfield {
+  margin-top: 20px;
+}
+.phenom.mod-other-type {
+    min-height: 18px;
+    font-size: 13px;
+}
+.phenom {
+    border-bottom: 1px solid #E2E4E6;
+    min-height: 30px;
+    padding: 15px 0;
+    position: relative;
+}
+.phenom.mod-other-type .phenom-creator {
+    height: 4px;
+    left: -26px;
+    top: 9pt;
+    width: 18px;
+}
+.phenom.mod-other-type .phenom-creator .member, .phenom.mod-other-type .phenom-creator .member-avatar {
+    height: 30px;
+    width: 30px;
+}
+.member {
+    background-color: #D6DADC;
+    border-radius: 3px;
+    color: #4d4d4d;
+    display: block;
+    float: left;
+    height: 30px;
+    margin: 0 4px 4px 0;
+    overflow: hidden;
+    position: relative;
+    width: 30px;
+    user-select: none;
+    z-index: 0;
+}
+.member-initials {
+    display: block;
+    font-size: 9pt;
+    font-weight: 700;
+    height: 30px;
+    left: 0;
+    line-height: 30px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+.phenom-desc {
+    display: inline;
+    margin: 0 6px 0 0;
+    word-wrap: break-word;
+}
+.inline-member {
+    cursor: pointer;
+}
+.u-font-weight-bold, .u-form-error, .u-form-info, th {
+    font-weight: 700;
+}
+.phenom-meta {
+    display: inline-block;
+    font-size: 9pt;
+    margin: 0;
+    min-width: 110px;
+}
+.quiet, .quiet a {
+    color: #8c8c8c;
+}
