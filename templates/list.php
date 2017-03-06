@@ -163,17 +163,6 @@
                       <button class="btn btn-infomember dropdown-toggle waves-effect waves-light" type="button" title="<?= $user->username; ?>" style="text-transform: uppercase;"><?php $initial = substr($user->username, 0, 1); echo $initial[0];?></button>
                     <?php endforeach; ?>
                   <li class="divider"></li>
-                    <div class="addmember">
-                      <button id="allviews" data-toggle="collapse" aria-expanded="false" class="btn btn-infoleft dropdown-toggle waves-effect waves-light" data-toggle="dropdown" style="width: 100%;"><span class="left"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Member</span></button>
-                      <ul role="menu" class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                      </ul>
-                    </div>
-                  <li class="divider"></li>
                   <li><i class="fa fa-indent" aria-hidden="true"></i> Activity</li>
                   <div id="allactiviy"></div>
                 </ul>
