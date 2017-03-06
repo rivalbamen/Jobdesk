@@ -78,7 +78,7 @@
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
             
-        <li><a href="<?=$this->pathFor('tampil-board')?>" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Job Desc <span class="fa arrow"></span></span></a>
+        <li><a href="/board/<?= $_SESSION['id']; ?>" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Job Desc <span class="fa arrow"></span></span></a>
                 </li>
         </ul>
     </div>
@@ -137,11 +137,42 @@
                     </div>
                 </div>
                 <div class="right">
+
+                 <div class="btn-group m-r-10">
+                    <div class="addmember">
+                        <button aria-expanded="true" class="btn btn-infoleft dropdown-toggle waves-effect waves-light" data-toggle="dropdown" style="width: 100%;"><span class="left"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Member</span></button>
+                        <ul role="menu" class="dropdown-menu" style="width: 250px;">
+                          <form action="<?= $this->pathFor('member'); ?>" method="post">
+                            <li>
+                                <input type="text" class="form-control" name="addmember" placeholder="insert username">
+                            </li>
+                            <li class="divider"></li>
+                            <button type="submit" class="btn btn-infoleft" style="width: 100%;"><span class="left"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Member</span></button>
+
+                          </form>
+                        </ul>
+                    </div>
+                </div>
                 <div class="btn-group m-r-10">
                 <div class="dropdown">
                 <button id="allviews" aria-expanded="false" data-toggle="dropdown" class="btn btn-infoleft" type="button">... <u>Show Menu</u></button>
                 <ul role="menu" id="style-1" class="dropdown-menu" style="margin-left: -180px; width: 310px; min-height: 565px; max-height: 565px;overflow: auto;">
                   <a href="#"><center><b>Menu</b><button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="margin: 0;">×</button></center></a>
+                  <li class="divider"></li>
+                    <?php foreach ($users as $user): ?>
+                      <button class="btn btn-infomember dropdown-toggle waves-effect waves-light" type="button" title="<?= $user->username; ?>" style="text-transform: uppercase;"><?php $initial = substr($user->username, 0, 1); echo $initial[0];?></button>
+                    <?php endforeach; ?>
+                  <li class="divider"></li>
+                    <div class="addmember">
+                      <button id="allviews" data-toggle="collapse" aria-expanded="false" class="btn btn-infoleft dropdown-toggle waves-effect waves-light" data-toggle="dropdown" style="width: 100%;"><span class="left"><i class="fa fa-user-plus" aria-hidden="true"></i> Add Member</span></button>
+                      <ul role="menu" class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                    </div>
                   <li class="divider"></li>
                   <li><i class="fa fa-indent" aria-hidden="true"></i> Activity</li>
                   <div id="allactiviy"></div>
@@ -382,7 +413,7 @@
                                               </div>
                                             </form>
                                             <script type="text/javascript">
-                                                $('form#checknya<?= $card->id;?>').submit(function( event ) {
+                                              $('form#checknya<?= $card->id;?>').submit(function( event ) {
                                                 event.preventDefault();
                                                 $.ajax({
                                                     url: '<?= $this->pathFor('save-checklist');?>',

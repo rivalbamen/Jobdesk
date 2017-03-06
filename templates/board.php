@@ -105,7 +105,7 @@
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
             
-        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
+        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu"><b>Job Desc</b> <span class="fa arrow"></span></span></a>
 </li>
 </ul>
     </div>
@@ -153,6 +153,7 @@
                               <div class="row">
                                   <div class="form-group">
                                     <label class="control-label">Tittle</label>
+                                    <input type="text" name="iduser" class="hidden" value="<?= $_SESSION['id']?>" />
                                     <input type="text" id="firstName" class="form-control" placeholder="add your board name . . ." name="boardname">
                                   </div>
                                   <div class="form-group">
