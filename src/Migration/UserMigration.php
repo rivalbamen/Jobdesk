@@ -14,6 +14,7 @@ class UserMigration
 					$table->increments('id');
 					$table->string('username', 30);
 					$table->string('password', 32);
+					$table->string('board', 50);
 					$table->char('role', 1);
 					$table->timestamps();
 					$table->softDeletes();

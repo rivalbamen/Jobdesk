@@ -6,12 +6,13 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use App\Controller\Controller;
 use App\Model\Board;
+use App\Model\User;
 
 class BoardController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
 	{
-		$data['boards'] = Board::all();
+		$data['boards'] = Board::whereRaw('find_in_set(? , user_id)', $args['id'])->get();
 		$data['title'] = "Task Manager";
 
 		return $this->renderer->render($response, 'board', $data);
@@ -44,6 +45,7 @@ class BoardController extends Controller
         	$this->session->setFlash('success', 'Board Berhasil Dibuat');
             $board = new Board();
        		$board->boardname = ($postData['boardname']);
+       		$board->user_id = $postData['iduser'];
         } else {
         // update
         	$board = Board::find($postData['pk']);
@@ -52,7 +54,7 @@ class BoardController extends Controller
 
         $board->save();
 
-        return $response->withRedirect($this->router->pathFor('tampil-board'));
+        return $response->withRedirect('/board/'.$_SESSION['id']);
 
 	}
 
@@ -62,5 +64,27 @@ class BoardController extends Controller
 		$board->delete();
 		$this->session->setFlash('success', 'Board Terhapus');
 		return $response->withRedirect($this->router->pathFor('tampil-board'));
+	}
+
+	public function member(Request $request, Response $response, Array $args)
+	{
+		$postData = $request->getParsedBody();
+
+		$listmember = User::where('username', $postData['addmember'])->get();
+		$board = Board::where('id', $_SESSION['board'])->get();
+
+		foreach ($board as $board) {
+			$member = $board->user_id;
+		}
+
+		foreach ($listmember as $list) {
+			$id = $list->id;
+		}
+
+		$add = $member.','.$id;
+		$board->user_id = $add;
+		$board->save();
+
+		return $response->withRedirect('/board/list/'.$_SESSION['board']);			
 	}
 }
