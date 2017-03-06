@@ -84,22 +84,8 @@
   <div class="navbar-default sidebar hidden-print" role="navigation">
     <div class="sidebar-nav navbar-collapse slimscrollsidebar">
         <ul class="nav" id="side-menu">
-            <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-                <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-                    </span>
-                </div>
-            </li>
-            
-            <li><a href="#" class="waves-effect"><i class="ti-user fa-fw"></i> <span class="hide-menu">User<span class="fa arrow"></span></span></a>
-              <ul class="nav nav-second-level">
-                <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
-        </ul>
-        <li><a href="#" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Personal Task Manager <span class="fa arrow"></span></span></a>
-              <ul class="nav nav-second-level">
-                <!-- <li><a href="<?=$this->pathFor('tampil-user')?>" class="waves-effect">Daftar User</a></li> -->
+            <li><a href="/board/<?= $_SESSION['id']; ?>" class="waves-effect"><i class="icon-list fa-fw"></i> <span class="hide-menu">Job Desc <span class="fa arrow"></span></span></a>
+                </li>
         </ul>
     </div>
   </div>

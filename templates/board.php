@@ -90,10 +90,10 @@
         <li class="dropdown">
             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#">
                 <img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle">
-                <b class="hidden-xs"> Admin</b>
+                <b class="hidden-xs"> <?= $_SESSION['uname']; ?></b>
             </a>
             <ul class="dropdown-menu dropdown-user animated">
-              <li><a href="#>"><i class="fa fa-power-off"></i> Logout</a></li>
+              <li><a href="<?= $this->pathFor('user-logout'); ?>"><i class="fa fa-power-off"></i> Logout</a></li>
           </ul>
         </li>
       </ul>
