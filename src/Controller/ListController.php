@@ -13,13 +13,6 @@ class ListController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
 	{
-		$data['lists'] = Lists::where('board', $args['id'])->get();
-		$data['boardlist'] = Board::whereRaw('find_in_set(? , user_id)', $_SESSION['id'])->get();
-		$data['boardrecent'] = Board::whereRaw('find_in_set(? , user_id)', $_SESSION['id'])->orderBy('id', 'DESC')->get();
-		$data['title'] = "List Manager - Task Manager";
-		$data['acts'] = Activity::where('board_id', $args['id'])->orderBy('id','DESC')->limit(15)->get();
-		$alluser= Board::select('user_id')->where('id', $args['id'])->get();
-
 		function comma_separated_to_array($string, $separator = ',')
 		{
 		  $vals = explode($separator, $string);
@@ -28,6 +21,13 @@ class ListController extends Controller
 		  }
 		  return array_diff($vals, array(""));
 		}
+
+		$data['lists'] = Lists::where('board', $args['id'])->get();
+		$data['boardlist'] = Board::whereRaw('find_in_set(? , user_id)', comma_separated_to_array($_SESSION['id']))->get();
+		$data['boardrecent'] = Board::whereRaw('find_in_set(? , user_id)', comma_separated_to_array($_SESSION['id']))->orderBy('id', 'DESC')->get();
+		$data['title'] = "List Manager - Task Manager";
+		$data['acts'] = Activity::where('board_id', $args['id'])->orderBy('id','DESC')->limit(15)->get();
+		$alluser= Board::select('user_id')->where('id', $args['id'])->get();
 
 		foreach ($alluser as $user) { 
 			$array_one = comma_separated_to_array($user->user_id);

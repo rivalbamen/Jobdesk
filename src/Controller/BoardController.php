@@ -12,7 +12,16 @@ class BoardController extends Controller
 {
 	public function __invoke(Request $request, Response $response, Array $args)
 	{
-		$data['boards'] = Board::whereRaw('find_in_set(? , user_id)', $args['id'])->get();
+		function comma_separated_to_array($string, $separator = ',')
+		{
+		  $vals = explode($separator, $string);
+		  foreach($vals as $key => $val) {
+		    $vals[$key] = trim($val);
+		  }
+		  return array_diff($vals, array(""));
+		}
+
+		$data['boards'] = Board::whereRaw('find_in_set(? , user_id)', comma_separated_to_array($args['id']))->get();
 		$data['title'] = "Task Manager";
 
 		return $this->renderer->render($response, 'board', $data);

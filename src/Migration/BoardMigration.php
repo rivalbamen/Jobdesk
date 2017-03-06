@@ -12,7 +12,7 @@ class BoardMigration
 			Capsule::schema()->create('boards', function(Blueprint $table)
 				{
 					$table->increments('id');
-					$table->integer('user_id');
+					$table->string('user_id', 50);
 					$table->string('boardname', 50);
 					$table->timestamps();
 					$table->softDeletes();
