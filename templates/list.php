@@ -61,7 +61,7 @@
         
         <li class="dropdown"> 
         <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"><img src="<?=$this->baseUrl()?>plugins/images/users/avatar.png" alt="user-img" width="36" class="img-circle"> 
-        <b class="hidden-xs"> Admin</b>
+        <b class="hidden-xs"> <?= $_SESSION['uname']; ?></b>
         </a>
           <ul class="dropdown-menu dropdown-user animated flipInY">
             <li><a href="#"><i class="ti-user"></i> My Profile</a></li>

@@ -90,10 +90,37 @@ class BoardController extends Controller
 			$id = $list->id;
 		}
 
-		$add = $member.','.$id;
-		$board->user_id = $add;
-		$board->save();
+		function comma_separated_to_array($string, $separator = ',')
+		{
+		  $vals = explode($separator, $string);
 
-		return $response->withRedirect('/board/list/'.$_SESSION['board']);			
+		  foreach($vals as $key => $val) {
+		    $vals[$key] = trim($val);
+		  }
+		  
+		  return array_diff($vals, array(""));
+		}
+
+		if(isset($id)){
+			$member = comma_separated_to_array($member.','.$id);
+			$update = array();
+
+			foreach ($member as $member) {
+				$update[] = $member;
+			}
+
+			$update = array_unique($update);
+			$update = implode(',', $update);
+			$board->user_id = $update;
+			$board->save();
+
+			return $response->withRedirect('/board/list/'.$_SESSION['board']);	
+
+		} else {
+
+			$this->session->setFlash('success', 'User tidak ditemukan');
+
+			return $response->withRedirect('/board/list/'.$_SESSION['board']);	
+		}		
 	}
 }
